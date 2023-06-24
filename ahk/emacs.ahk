@@ -1,3 +1,4 @@
+;; reference: https://github.com/shiman/dotfiles/blob/master/ahk/emacs.ahk
 ;;
 ;; An autohotkey script that provides emacs-like keybinding on Windows
 ;;
