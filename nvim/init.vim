@@ -1,3 +1,6 @@
+let g:python_host_prog  = '/Users/chy/.pyenv/shims/python'
+let g:python3_host_prog = '/Users/chy/.pyenv/shims/python'
+
 syntax on
 
 set noswapfile
@@ -96,13 +99,26 @@ lua << EOF
     })
 
     -- Set up lspconfig.
-    -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
     -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
     require('lspconfig')['pyright'].setup {
-        -- capabilities = capabilities
+        capabilities = capabilities
     }
 EOF
 
+" 热键映射
+"Split a horizontal window and Go to definition
+au FileType go,python,c,javascript,swift,typescript nmap <silent> gd :split<cr> :lua vim.lsp.buf.definition()<CR>
+"Split a vertical window and Go to definition
+au FileType go,python,c,javascript,swift,typescript nmap <silent> gv :vsplit<cr> :lua vim.lsp.buf.definition()<CR>
+"Split a horizontal window and Go to declaration (many lsp servers don't implement this, check gd instead)
+au FileType go,python,c,javascript,swift,typescript nmap <silent> gD :split<cr> :lua vim.lsp.buf.declaration()<CR>
+"Split a window and show all references to this symbol under the cursor in the quickfix window
+au FileType go,python,c,javascript,swift,typescript nmap <silent> gr :split<cr> :lua vim.lsp.buf.references()<CR>
+"Split a window and show all implementations of this symbol under the cursor in the quickfix window
+au FileType go,python,c,javascript,swift,typescript nmap <silent> gi :split<cr> :lua vim.lsp.buf.implementation()<CR>
+"Show the documentation of the signature help message of this symbol under the cursor.
+au FileType go,python,c,javascript,swift,typescript nmap <silent> <C-k> :lua vim.lsp.buf.signature_help()<CR>
 
 " fzf 配置
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }    " 窗口形式展示
@@ -117,4 +133,3 @@ function! s:find_git_root()
 endfunction
 command! ProjectFiles execute 'FZF' s:find_git_root()
 nmap <c-p> :ProjectFiles<CR>
-
