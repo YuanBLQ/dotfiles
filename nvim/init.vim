@@ -1,6 +1,36 @@
-let g:python_host_prog  = '/Users/chy/.pyenv/shims/python'
-let g:python3_host_prog = '/Users/chy/.pyenv/shims/python'
+" Ref: https://github.com/neovim/neovim/issues/2437
+let g:python_host_prog  = '~/.pyenv/shims/python'
+let g:python3_host_prog = '~/.pyenv/shims/python'
 
+
+" Plug
+call plug#begin('~/.config/nvim/plugs')
+Plug 'vim-airline/vim-airline'                          " 状态栏添加 git 相关信息
+Plug 'joshdick/onedark.vim'                             " 配色
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " 交互终端文件管理器
+
+Plug 'neovim/nvim-lspconfig'
+" Plug 'tamago324/nlsp-settings.nvim'
+" Plug 'williamboman/nvim-lsp-installer'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+Plug 'dense-analysis/ale'
+call plug#end()
+
+" one-dark
+colorscheme onedark
+" let g:airline_theme='onedark'
+let g:lightline = {
+\ 'colorscheme': 'onedark',
+\ }
+
+
+" Basic
 syntax on
 
 set noswapfile
@@ -24,31 +54,6 @@ set laststatus=2                    " 总是显示状态栏
 set clipboard=unnamed               " 共享系统剪切板
 set cursorline                      " 高亮光标所在行
 set backspace=2
-
-
-" Plug
-call plug#begin('~/.config/nvim/plugs')
-Plug 'vim-airline/vim-airline'                          " 状态栏添加 git 相关信息
-Plug 'joshdick/onedark.vim'                             " 配色
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " 交互终端文件管理器
-
-Plug 'neovim/nvim-lspconfig'
-" Plug 'tamago324/nlsp-settings.nvim'
-" Plug 'williamboman/nvim-lsp-installer'
-
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-call plug#end()
-
-" one-dark
-colorscheme onedark
-" let g:airline_theme='onedark'
-let g:lightline = {
-\ 'colorscheme': 'onedark',
-\ }
 
 
 " cmp
@@ -106,7 +111,6 @@ lua << EOF
     }
 EOF
 
-" 热键映射
 "Split a horizontal window and Go to definition
 au FileType go,python,c,javascript,swift,typescript nmap <silent> gd :split<cr> :lua vim.lsp.buf.definition()<CR>
 "Split a vertical window and Go to definition
@@ -119,6 +123,7 @@ au FileType go,python,c,javascript,swift,typescript nmap <silent> gr :split<cr> 
 au FileType go,python,c,javascript,swift,typescript nmap <silent> gi :split<cr> :lua vim.lsp.buf.implementation()<CR>
 "Show the documentation of the signature help message of this symbol under the cursor.
 au FileType go,python,c,javascript,swift,typescript nmap <silent> <C-k> :lua vim.lsp.buf.signature_help()<CR>
+
 
 " fzf 配置
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }    " 窗口形式展示
