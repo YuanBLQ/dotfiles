@@ -111,6 +111,21 @@ lua << EOF
     }
 EOF
 
+
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+  \   'python': ['black', 'mypy'],
+\}
+let g:ale_fixers_explicit = 1
+let g:ale_fixers = {
+  \   'python': ['black', 'isort'],
+\}
+let g:ale_fix_on_save = 1
+let g:python_mypy_show_notes = 1
+let g:ale_python_isort_options = '--profile black --ca'
+
+
 "Split a horizontal window and Go to definition
 au FileType go,python,c,javascript,swift,typescript nmap <silent> gd :split<cr> :lua vim.lsp.buf.definition()<CR>
 "Split a vertical window and Go to definition
