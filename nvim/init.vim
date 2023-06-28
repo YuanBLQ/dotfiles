@@ -31,7 +31,7 @@ syntax on
 
 set noswapfile
 set undodir=~/.config/nvim/undodir  " 历史记录文件地址
-set undofile						" 历史记录记录到文件中
+set undofile                        " 历史记录记录到文件中
 
 " tab宽度
 set tabstop=4                       " tab 的可视化宽度
@@ -82,7 +82,7 @@ lua << EOF
             group_empty = true,
         },
         filters = {
-            dotfiles = true,
+            dotfiles = false,
         },
     })
 
@@ -90,6 +90,8 @@ lua << EOF
     local function open_nvim_tree()
         -- open the tree
         require("nvim-tree.api").tree.open()
+        -- move cursor to left window
+        vim.cmd("wincmd l")
     end
     vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
