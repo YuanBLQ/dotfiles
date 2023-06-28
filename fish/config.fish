@@ -107,6 +107,9 @@ end
 
 # Rewrite function fish_user_key_bindings
 if functions -q fish_user_key_bindings
+    if functions -q _old_fish_user_key_bindings
+        functions -e _old_fish_user_key_bindings
+    end
     functions -c fish_user_key_bindings _old_fish_user_key_bindings
 end
 function fish_user_key_bindings
@@ -120,5 +123,6 @@ end
 
 # alias
 alias sed gsed
+alias ll="ls -al"
 alias ssh-monitor="ssh root@192.168.66.47"
 alias pocr="pngpaste - | tesseract stdin stdout"
