@@ -53,7 +53,11 @@ set number                          " 显示行号
 set laststatus=2                    " 总是显示状态栏
 set clipboard=unnamed               " 共享系统剪切板
 set cursorline                      " 高亮光标所在行
+set cursorcolumn                    " 高亮光标所在列
 set backspace=2
+
+set list "Show tabs via listchars below, and display end sign after endo fline.
+set listchars=space:·,tab:▸\ ,eol:¬,extends:❯,precedes:❮ "Chars that to display list.
 
 
 " cmp
@@ -128,6 +132,8 @@ let g:ale_python_isort_options = '--profile black --ca'
 
 "Split a horizontal window and Go to definition
 au FileType go,python,c,javascript,swift,typescript nmap <silent> gd :split<cr> :lua vim.lsp.buf.definition()<CR>
+" no window split and Go to definition
+au FileType go,python,c,javascript,swift,typescript nmap <silent> gl :lua vim.lsp.buf.definition()<CR>
 "Split a vertical window and Go to definition
 au FileType go,python,c,javascript,swift,typescript nmap <silent> gv :vsplit<cr> :lua vim.lsp.buf.definition()<CR>
 "Split a horizontal window and Go to declaration (many lsp servers don't implement this, check gd instead)
