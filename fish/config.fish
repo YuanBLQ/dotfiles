@@ -124,5 +124,4 @@ end
 # alias
 alias sed gsed
 alias ll="ls -al"
-alias ssh-monitor="ssh root@192.168.66.47"
 alias pocr="pngpaste - | tesseract stdin stdout"
