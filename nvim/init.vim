@@ -9,6 +9,9 @@ Plug 'vim-airline/vim-airline'                          " 状态栏添加 git �
 Plug 'joshdick/onedark.vim'                             " 配色
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " 交互终端文件管理器
 
+Plug 'nvim-tree/nvim-web-devicons' " optional
+Plug 'nvim-tree/nvim-tree.lua'
+
 Plug 'neovim/nvim-lspconfig'
 " Plug 'tamago324/nlsp-settings.nvim'
 " Plug 'williamboman/nvim-lsp-installer'
@@ -21,13 +24,6 @@ Plug 'hrsh7th/nvim-cmp'
 
 Plug 'dense-analysis/ale'
 call plug#end()
-
-" one-dark
-colorscheme onedark
-" let g:airline_theme='onedark'
-let g:lightline = {
-\ 'colorscheme': 'onedark',
-\ }
 
 
 " Basic
@@ -55,13 +51,49 @@ set clipboard=unnamed               " 共享系统剪切板
 set cursorline                      " 高亮光标所在行
 set cursorcolumn                    " 高亮光标所在列
 set backspace=2
+set foldmethod=indent               " 按照语法折叠
 
 set list "Show tabs via listchars below, and display end sign after endo fline.
 set listchars=space:·,tab:▸\ ,eol:¬,extends:❯,precedes:❮ "Chars that to display list.
 
 
+" one-dark
+colorscheme onedark
+" let g:airline_theme='onedark'
+let g:lightline = {
+\ 'colorscheme': 'onedark',
+\ }
+
+
 " cmp
 lua << EOF
+    -- disable netrw at the very start of your init.lua
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+    -- empty setup using defaults
+    require("nvim-tree").setup()
+    -- OR setup with some options
+    require("nvim-tree").setup({
+        sort_by = "case_sensitive",
+        view = {
+            width = 30,
+        },
+        renderer = {
+            group_empty = true,
+        },
+        filters = {
+            dotfiles = true,
+        },
+    })
+
+    -- Hook VimEnter for open nvim tree
+    local function open_nvim_tree()
+        -- open the tree
+        require("nvim-tree.api").tree.open()
+    end
+    -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+
     -- Set up nvim-cmp.
     local cmp = require'cmp'
 
