@@ -30,28 +30,29 @@ call plug#end()
 syntax on
 
 set noswapfile
-set undodir=~/.config/nvim/undodir  " 历史记录文件地址
-set undofile                        " 历史记录记录到文件中
+set undodir=~/.config/nvim/undodir              " 历史记录文件地址
+set undofile                                    " 历史记录记录到文件中
 
 " tab宽度
-set tabstop=4                       " tab 的可视化宽度
-set softtabstop=4                   " tab 的空格数
-set shiftwidth=4                    " 缩进的空格数
-set expandtab                       " tab 的时候转为空格
-set smartindent                     " tab respect 'tabstop', 'shiftwidth', 'softtabstop'
-set autoindent                      " 新行自动缩进
+set tabstop=4                                   " tab 的可视化宽度
+set softtabstop=4                               " tab 的空格数
+set shiftwidth=4                                " 缩进的空格数
+set smartindent                                 " tab respect 'tabstop', 'shiftwidth', 'softtabstop'
+set autoindent                                  " 新行自动缩进
+set expandtab                                   " tab 的时候转为空格
+autocmd FileType go setlocal noexpandtab        " golang 文件中 tab 不要转为空格
 
 set showmatch
 set hlsearch
-set incsearch                       " 增量式搜索
-set scrolloff=8                     " 滚动的时候永远会和最上最下隔8行
-set number                          " 显示行号
-set laststatus=2                    " 总是显示状态栏
-set clipboard=unnamed               " 共享系统剪切板
-set cursorline                      " 高亮光标所在行
-set cursorcolumn                    " 高亮光标所在列
+set incsearch                                   " 增量式搜索
+set scrolloff=8                                 " 滚动的时候永远会和最上最下隔8行
+set number                                      " 显示行号
+set laststatus=2                                " 总是显示状态栏
+set clipboard=unnamed                           " 共享系统剪切板
+set cursorline                                  " 高亮光标所在行
+set cursorcolumn                                " 高亮光标所在列
 set backspace=2
-set foldmethod=indent               " 按照语法折叠
+set foldmethod=indent                           " 按照语法折叠
 
 set list "Show tabs via listchars below, and display end sign after endo fline.
 set listchars=space:·,tab:▸\ ,eol:¬,extends:❯,precedes:❮ "Chars that to display list.
@@ -164,6 +165,9 @@ lua << EOF
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
     require('lspconfig')['pyright'].setup {
+        capabilities = capabilities
+    }
+    require('lspconfig')['gopls'].setup {
         capabilities = capabilities
     }
 EOF
