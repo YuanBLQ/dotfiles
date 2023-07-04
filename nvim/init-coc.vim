@@ -147,8 +147,11 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gl :call CocAction('jumpDefinition')<CR>
+au FileType go,python,c,cpp,javascript,rust nmap <silent> rn <Plug>(coc-rename)
+au FileType go,python,c,cpp,javascript,rust nmap <silent> rf <Plug>(coc-refactor)
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gr <Plug>(coc-references)
-au FileType go,python,c,cpp,javascript,rust nmap <silent> gD <Plug>(coc-type-definition)
+au FileType go,python,c,cpp,javascript,rust nmap <silent> gi <Plug>(coc-implementation)
+au FileType go,python,c,cpp,javascript,rust nmap <silent> gt <Plug>(coc-type-definition)
 au FileType go,python,c,cpp,javascript,rust nmap <silent>  K :call ShowDocumentation()<CR>
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
 function! ShowDocumentation()
@@ -162,7 +165,10 @@ endfunction
 
 " fzf 配置
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }    " 窗口形式展示
-" let $FZF_DEFAULT_OPTS='--reverse'                                   " 往下展开
+let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'
+    \ --bind ctrl-d:preview-down,ctrl-u:preview-up,
+    \ctrl-f:preview-page-down,
+    \ctrl-b:preview-page-up"
 
 " ctrl-p 打开搜索框
 " ProjectFiles tries to locate files relative to the git root contained in
