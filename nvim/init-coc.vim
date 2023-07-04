@@ -7,22 +7,26 @@ let g:python3_host_prog = '~/.pyenv/shims/python'
 call plug#begin('~/.config/nvim/plugs')
 Plug 'vim-airline/vim-airline'                          " 状态栏添加 git 相关信息
 Plug 'joshdick/onedark.vim'                             " 配色
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " 交互终端文件管理器
 
-Plug 'nvim-tree/nvim-web-devicons'                      " tree icon
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 
-Plug 'troydm/zoomwintab.vim' " <c-w> + o  zoom in or out
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'dense-analysis/ale'
+
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
 
 " Basic
 syntax on
+
+set mouse=
 
 set noswapfile
 set undodir=~/.config/nvim/undodir  " 历史记录文件地址
@@ -47,9 +51,14 @@ set cursorline                      " 高亮光标所在行
 set cursorcolumn                    " 高亮光标所在列
 set backspace=2
 set foldmethod=indent               " 按照语法折叠
+set foldlevel=999
 
 set list "Show tabs via listchars below, and display end sign after endo fline.
 set listchars=space:·,tab:▸\ ,eol:¬,extends:❯,precedes:❮ "Chars that to display list.
+
+
+" set max height and width to current window
+nnoremap <c-l> <c-w>_ <c-w><bar>
 
 
 " one-dark
@@ -59,13 +68,6 @@ let g:lightline = {
 \ 'colorscheme': 'onedark',
 \ }
 
-
-set updatetime=300
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 
 " cmp
@@ -90,34 +92,35 @@ lua << EOF
     })
 
     -- Hook VimEnter for open nvim tree
-    local function open_nvim_tree()
-        -- open the tree
-        require("nvim-tree.api").tree.open()
-        -- move cursor to left window
-        vim.cmd("wincmd l")
-    end
-    vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+    -- local function open_nvim_tree()
+    --     -- open the tree
+    --     require("nvim-tree.api").tree.open()
+    --     -- move cursor to left window
+    --     vim.cmd("wincmd l")
+    -- end
+    -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
     -- A better solution based on QuitPre that checks if it's the last window
     -- Ref: https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close#ppwwyyxx
-    vim.api.nvim_create_autocmd("QuitPre", {
-        callback = function()
-            local invalid_win = {}
-            local wins = vim.api.nvim_list_wins()
-            for _, w in ipairs(wins) do
-                local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-                if bufname:match("NvimTree_") ~= nil then
-                    table.insert(invalid_win, w)
-                end
-            end
-            if #invalid_win == #wins - 1 then
-                -- Should quit, so we close all invalid windows.
-                for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
-            end
-        end
-    })
+    -- vim.api.nvim_create_autocmd("QuitPre", {
+    --     callback = function()
+    --         local invalid_win = {}
+    --         local wins = vim.api.nvim_list_wins()
+    --         for _, w in ipairs(wins) do
+    --             local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
+    --             if bufname:match("NvimTree_") ~= nil then
+    --                 table.insert(invalid_win, w)
+    --             end
+    --         end
+    --         if #invalid_win == #wins - 1 then
+    --             -- Should quit, so we close all invalid windows.
+    --             for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
+    --         end
+    --     end
+    -- })
 
 
+    require("gitsigns").setup()
 EOF
 
 
@@ -134,6 +137,13 @@ let g:ale_fix_on_save = 1
 let g:python_mypy_show_notes = 1
 let g:ale_python_isort_options = '--profile black --ca'
 
+
+set updatetime=300
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gl :call CocAction('jumpDefinition')<CR>
@@ -163,3 +173,4 @@ function! s:find_git_root()
 endfunction
 command! ProjectFiles execute 'FZF' s:find_git_root()
 nmap <c-p> :ProjectFiles<CR>
+nmap <c-j> :Rg<CR>
