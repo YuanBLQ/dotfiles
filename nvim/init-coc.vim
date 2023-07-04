@@ -29,28 +29,29 @@ syntax on
 set mouse=
 
 set noswapfile
-set undodir=~/.config/nvim/undodir  " 历史记录文件地址
-set undofile                        " 历史记录记录到文件中
+set undodir=~/.config/nvim/undodir              " 历史记录文件地址
+set undofile                                    " 历史记录记录到文件中
 
 " tab宽度
-set tabstop=4                       " tab 的可视化宽度
-set softtabstop=4                   " tab 的空格数
-set shiftwidth=4                    " 缩进的空格数
-set expandtab                       " tab 的时候转为空格
-set smartindent                     " tab respect 'tabstop', 'shiftwidth', 'softtabstop'
-set autoindent                      " 新行自动缩进
+set tabstop=4                                   " tab 的可视化宽度
+set softtabstop=4                               " tab 的空格数
+set shiftwidth=4                                " 缩进的空格数
+set expandtab                                   " tab 的时候转为空格
+set smartindent                                 " tab respect 'tabstop', 'shiftwidth', 'softtabstop'
+set autoindent                                  " 新行自动缩进
+autocmd FileType go setlocal noexpandtab        " golang 文件中 tab 不要转为空格
 
 set showmatch
 set hlsearch
-set incsearch                       " 增量式搜索
-set scrolloff=8                     " 滚动的时候永远会和最上最下隔8行
-set number                          " 显示行号
-set laststatus=2                    " 总是显示状态栏
-set clipboard=unnamed               " 共享系统剪切板
-set cursorline                      " 高亮光标所在行
-set cursorcolumn                    " 高亮光标所在列
+set incsearch                                   " 增量式搜索
+set scrolloff=8                                 " 滚动的时候永远会和最上最下隔8行
+set number                                      " 显示行号
+set laststatus=2                                " 总是显示状态栏
+set clipboard=unnamed                           " 共享系统剪切板
+set cursorline                                  " 高亮光标所在行
+set cursorcolumn                                " 高亮光标所在列
 set backspace=2
-set foldmethod=indent               " 按照语法折叠
+set foldmethod=indent                           " 按照缩进折叠
 set foldlevel=999
 
 set list "Show tabs via listchars below, and display end sign after endo fline.
@@ -102,22 +103,22 @@ lua << EOF
 
     -- A better solution based on QuitPre that checks if it's the last window
     -- Ref: https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close#ppwwyyxx
-    -- vim.api.nvim_create_autocmd("QuitPre", {
-    --     callback = function()
-    --         local invalid_win = {}
-    --         local wins = vim.api.nvim_list_wins()
-    --         for _, w in ipairs(wins) do
-    --             local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-    --             if bufname:match("NvimTree_") ~= nil then
-    --                 table.insert(invalid_win, w)
-    --             end
-    --         end
-    --         if #invalid_win == #wins - 1 then
-    --             -- Should quit, so we close all invalid windows.
-    --             for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
-    --         end
-    --     end
-    -- })
+    vim.api.nvim_create_autocmd("QuitPre", {
+        callback = function()
+            local invalid_win = {}
+            local wins = vim.api.nvim_list_wins()
+            for _, w in ipairs(wins) do
+                local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
+                if bufname:match("NvimTree_") ~= nil then
+                    table.insert(invalid_win, w)
+                end
+            end
+            if #invalid_win == #wins - 1 then
+                -- Should quit, so we close all invalid windows.
+                for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
+            end
+        end
+    })
 
 
     require("gitsigns").setup()
@@ -128,10 +129,12 @@ EOF
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
   \   'python': ['black', 'mypy'],
+  \   'go': ['gopls'],
 \}
 let g:ale_fixers_explicit = 1
 let g:ale_fixers = {
   \   'python': ['black', 'isort'],
+  \   'go': ['gofmt'],
 \}
 let g:ale_fix_on_save = 1
 let g:python_mypy_show_notes = 1
