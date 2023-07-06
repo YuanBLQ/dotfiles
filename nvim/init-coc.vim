@@ -103,22 +103,22 @@ lua << EOF
 
     -- A better solution based on QuitPre that checks if it's the last window
     -- Ref: https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close#ppwwyyxx
-    vim.api.nvim_create_autocmd("QuitPre", {
-        callback = function()
-            local invalid_win = {}
-            local wins = vim.api.nvim_list_wins()
-            for _, w in ipairs(wins) do
-                local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-                if bufname:match("NvimTree_") ~= nil then
-                    table.insert(invalid_win, w)
-                end
-            end
-            if #invalid_win == #wins - 1 then
-                -- Should quit, so we close all invalid windows.
-                for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
-            end
-        end
-    })
+    -- vim.api.nvim_create_autocmd("QuitPre", {
+    --     callback = function()
+    --         local invalid_win = {}
+    --         local wins = vim.api.nvim_list_wins()
+    --         for _, w in ipairs(wins) do
+    --             local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
+    --             if bufname:match("NvimTree_") ~= nil then
+    --                 table.insert(invalid_win, w)
+    --             end
+    --         end
+    --         if #invalid_win == #wins - 1 then
+    --             -- Should quit, so we close all invalid windows.
+    --             for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
+    --         end
+    --     end
+    -- })
 
 
     require("gitsigns").setup()
@@ -173,7 +173,6 @@ let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-rang
     \ctrl-f:preview-page-down,
     \ctrl-b:preview-page-up"
 
-" ctrl-p 打开搜索框
 " ProjectFiles tries to locate files relative to the git root contained in
 " NerdTree, falling back to the current NerdTree dir if not available
 " see https://github.com/junegunn/fzf.vim/issues/47#issuecomment-160237795
@@ -181,5 +180,11 @@ function! s:find_git_root()
     return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 command! ProjectFiles execute 'FZF' s:find_git_root()
-nmap <c-p> :ProjectFiles<CR>
+
+" 文件搜索
+nmap <c-p> :Files<CR>
+" 文件内容搜索
 nmap <c-j> :Rg<CR>
+
+" custom defined command
+:command NT :NvimTreeFocus
