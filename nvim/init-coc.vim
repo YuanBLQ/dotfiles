@@ -27,6 +27,7 @@ call plug#end()
 syntax on
 
 set mouse=
+set nowrap
 
 set noswapfile
 set undodir=~/.config/nvim/undodir              " 历史记录文件地址
@@ -56,6 +57,18 @@ set foldlevel=999
 
 set list "Show tabs via listchars below, and display end sign after endo fline.
 set listchars=space:·,tab:▸\ ,eol:¬,extends:❯,precedes:❮ "Chars that to display list.
+
+
+function! HighlightExtraWhitespace()
+  highlight ExtraWhitespace ctermbg=red guibg=#EC7063
+  match ExtraWhitespace /\s\+$/
+endfunction
+
+autocmd BufWinEnter * if &buftype != 'terminal' | call HighlightExtraWhitespace() | endif
+
+"保存时自动清理行尾空白
+command! WS :%s/\s\+$//e
+autocmd BufWrite * :WS
 
 
 " set max height and width to current window
@@ -168,7 +181,7 @@ endfunction
 
 
 " fzf 配置
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }    " 窗口形式展示
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }    " 窗口形式展示
 let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'
     \ --bind ctrl-d:preview-down,ctrl-u:preview-up,
     \ctrl-f:preview-page-down,
@@ -177,15 +190,18 @@ let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-rang
 " ProjectFiles tries to locate files relative to the git root contained in
 " NerdTree, falling back to the current NerdTree dir if not available
 " see https://github.com/junegunn/fzf.vim/issues/47#issuecomment-160237795
-function! s:find_git_root()
-    return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-command! ProjectFiles execute 'FZF' s:find_git_root()
+" function! s:find_git_root()
+"     return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+" endfunction
+" command! ProjectFiles execute 'FZF' s:find_git_root()
 
 " 文件搜索
 nmap <c-p> :Files<CR>
 " 文件内容搜索
 nmap <c-j> :Rg<CR>
 
+
 " custom defined command
-:command NT :NvimTreeFocus
+command! NT :NvimTreeFocus
+
+
