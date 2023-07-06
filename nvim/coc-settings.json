@@ -1,0 +1,21 @@
+{
+    "coc.preferences.formatOnSave": true,
+    "diagnostic.displayByAle": false,
+    "pyright.disableDiagnostics": false,
+    "pyright.enable": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "~/.pyenv/shims/black",
+    "python.sortImports.path": "~/.pyenv/shims/isort",
+    "python.sortImports.args": [
+        "--profile",
+        "black",
+        "--ca"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyPath": "~/.pyenv/shims/mypy",
+    "python.linting.mypyArgs": [
+        "--follow-imports=silent",
+        "--show-column-numbers"
+    ]
+}

@@ -17,7 +17,7 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 
 Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
@@ -126,19 +126,20 @@ EOF
 
 
 " Only run linters named in ale_linters settings.
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-  \   'python': ['black', 'mypy'],
-  \   'go': ['gopls'],
-\}
-let g:ale_fixers_explicit = 1
-let g:ale_fixers = {
-  \   'python': ['black', 'isort'],
-  \   'go': ['gofmt'],
-\}
-let g:ale_fix_on_save = 1
-let g:python_mypy_show_notes = 1
-let g:ale_python_isort_options = '--profile black --ca'
+" let g:ale_disable_lsp = 1
+" let g:ale_linters_explicit = 1
+" let g:ale_linters = {
+"   \   'python': ['mypy'],
+"   \   'go': ['gopls'],
+" \}
+" let g:ale_fixers_explicit = 1
+" let g:ale_fixers = {
+"   \   'python': ['black', 'isort'],
+"   \   'go': ['gofmt'],
+" \}
+" let g:ale_fix_on_save = 1
+" let g:python_mypy_show_notes = 1
+" let g:ale_python_isort_options = '--profile black --ca'
 
 
 set updatetime=300
