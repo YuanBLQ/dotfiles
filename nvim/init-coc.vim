@@ -135,6 +135,8 @@ lua << EOF
 
 
     require("gitsigns").setup()
+
+
 EOF
 
 
@@ -157,10 +159,17 @@ EOF
 
 set updatetime=300
 
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nnoremap <silent><nowait> <space>a :CocDiagnostics<cr>
+nnoremap <silent><nowait> <space>k <Plug>(coc-diagnostic-prev)
+nnoremap <silent><nowait> <space>j <Plug>(coc-diagnostic-next)
 
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gl :call CocAction('jumpDefinition')<CR>
