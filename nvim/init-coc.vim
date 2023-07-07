@@ -75,7 +75,7 @@ autocmd BufWrite * :WS
 nnoremap <c-l> <c-w>_ <c-w><bar>
 
 
-" one-dark
+" joshdick/onedark.vim
 colorscheme onedark
 " let g:airline_theme='onedark'
 let g:lightline = {
@@ -212,5 +212,6 @@ nmap <c-j> :Rg<CR>
 
 " custom defined command
 command! NT :NvimTreeFocus
+command! NR :NvimTreeResize 30
 
 
