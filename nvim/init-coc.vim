@@ -20,6 +20,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'dense-analysis/ale'
 
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'windwp/nvim-autopairs'
 call plug#end()
 
 
@@ -136,7 +137,7 @@ lua << EOF
 
     require("gitsigns").setup()
 
-
+    require("nvim-autopairs").setup {}
 EOF
 
 
