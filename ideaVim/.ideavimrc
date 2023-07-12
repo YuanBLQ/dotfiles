@@ -39,5 +39,7 @@ set clipboard=unnamed
 "map \b <Action>(ToggleLineBreakpoint)
 
 nmap gi :action GotoImplementation<CR>
-nmap gd :action GotoDeclaration<CR>
+nmap gd <Action>(SplitVertically)<CR>:action GotoDeclaration<CR>
 nmap gl :action GotoDeclaration<CR>
+nmap tj <Action>(PreviousTab)
+nmap tk <Action>(NextTab)
