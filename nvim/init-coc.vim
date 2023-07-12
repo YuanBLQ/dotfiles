@@ -174,7 +174,6 @@ nnoremap <silent><nowait> <space>j <Plug>(coc-diagnostic-next)
 
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gl :call CocAction('jumpDefinition')<CR>
-au FileType go,python,c,cpp,javascript,rust nmap <silent> rn <Plug>(coc-rename)
 au FileType go,python,c,cpp,javascript,rust nmap <silent> rf <Plug>(coc-refactor)
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gr <Plug>(coc-references)
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gi <Plug>(coc-implementation)
