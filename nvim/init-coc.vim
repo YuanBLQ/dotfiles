@@ -7,6 +7,7 @@ let g:python3_host_prog = '~/.pyenv/shims/python'
 call plug#begin('~/.config/nvim/plugs')
 Plug 'vim-airline/vim-airline'                          " 状态栏添加 git 相关信息
 Plug 'joshdick/onedark.vim'                             " 配色
+Plug 'folke/tokyonight.nvim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -17,6 +18,7 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'dense-analysis/ale'
 
 Plug 'lewis6991/gitsigns.nvim'
@@ -76,13 +78,15 @@ autocmd BufWrite * :WS
 nnoremap <c-l> <c-w>_ <c-w><bar>
 
 
-" joshdick/onedark.vim
-colorscheme onedark
-" let g:airline_theme='onedark'
-let g:lightline = {
-\ 'colorscheme': 'onedark',
-\ }
+" " joshdick/onedark.vim
+" colorscheme onedark
+" " let g:airline_theme='onedark'
+" let g:lightline = {
+" \ 'colorscheme': 'onedark',
+" \ }
 
+
+colorscheme tokyonight-storm
 
 
 " cmp
@@ -138,6 +142,16 @@ lua << EOF
     require("gitsigns").setup()
 
     require("nvim-autopairs").setup {}
+
+    require'nvim-treesitter.configs'.setup {
+        auto_install = false,
+
+        highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false,
+          },
+    }
+
 EOF
 
 
