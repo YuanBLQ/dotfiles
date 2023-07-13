@@ -38,6 +38,8 @@ set clipboard=unnamed
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
+" [action list](https://gist.github.com/zchee/9c78f91cc5ad771c1f5d)
+
 " window and tab
 nmap fj <Action>(PreviousTab)
 nmap fk <Action>(NextTab)
