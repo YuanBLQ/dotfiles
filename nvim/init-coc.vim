@@ -158,11 +158,12 @@ lua << EOF
     require('lualine').setup{
         options = {
             theme = 'auto',
-            component_separators = '|',
+            component_separators = { left = '', right = ''},
+            section_separators = { left = '', right = ''},
         },
         sections = {
             lualine_b = {'branch', 'diff', 'diagnostics'},
-            lualine_x = {'windows', 'selectioncount', 'filetype', 'encoding'}
+            lualine_x = {'selectioncount', 'encoding'}
         }
     }
 
