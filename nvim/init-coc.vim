@@ -80,6 +80,9 @@ autocmd BufWrite * :WS
 " set max height and width to current window
 nnoremap <c-l> <c-w>_ <c-w><bar>
 
+" copy relative file path of current buffer
+nmap cp :let @+ = expand("%")<cr>
+
 
 " " joshdick/onedark.vim
 " colorscheme onedark
@@ -163,6 +166,12 @@ lua << EOF
         },
         sections = {
             lualine_b = {'branch', 'diff', 'diagnostics'},
+            lualine_c = {
+                {
+                   'filename',
+                    path = 1,
+                },
+            },
             lualine_x = {'selectioncount', 'encoding'}
         }
     }
