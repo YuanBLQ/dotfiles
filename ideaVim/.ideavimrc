@@ -38,11 +38,27 @@ set clipboard=unnamed
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
+" [action list](https://gist.github.com/zchee/9c78f91cc5ad771c1f5d)
+
+" window and tab
+nmap fj <Action>(PreviousTab)
+nmap fk <Action>(NextTab)
+
+map <c-l> <Action>(MaximizeEditorInSplit)
+" map <c-w>+ <Action>(StretchSplitToTop)
+" map <c-w>- <Action>(StretchSplitToBottom)
+" map <c-w>< <Action>(StretchSplitToLeft)
+" map <c-w>> <Action>(StretchSplitToRight)
+
+
+" navigate methods
 nmap gi :action GotoImplementation<CR>
 nmap gd <Action>(SplitHorizontally)<Action>(GotoDeclaration)
 nmap gv <Action>(SplitVertically)<Action>(GotoDeclaration)
 nmap gl <Action>(GotoDeclaration)
 
-nmap fj <Action>(PreviousTab)
-nmap fk <Action>(NextTab)
+nmap gb <Action>(Back)
+nmap gf <Action>(Forward)
 
+
+" Find more examples here: https://jb.gg/share-ideavimrc
