@@ -5,17 +5,20 @@ let g:python3_host_prog = '~/.pyenv/shims/python'
 
 " Plug
 call plug#begin('~/.config/nvim/plugs')
-Plug 'vim-airline/vim-airline'                          " 状态栏添加 git 相关信息
-Plug 'joshdick/onedark.vim'                             " 配色
+Plug 'nvim-tree/nvim-web-devicons'
+
+" Plug 'joshdick/onedark.vim'
 Plug 'folke/tokyonight.nvim'
+
+Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
+
+" Plug 'vim-airline/vim-airline'
+Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
-
-Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -150,6 +153,17 @@ lua << EOF
             enable = true,
             additional_vim_regex_highlighting = false,
           },
+    }
+
+    require('lualine').setup{
+        options = {
+            theme = 'auto',
+            component_separators = '|',
+        },
+        sections = {
+            lualine_b = {'branch', 'diff', 'diagnostics'},
+            lualine_x = {'windows', 'selectioncount', 'filetype', 'encoding'}
+        }
     }
 
 EOF
