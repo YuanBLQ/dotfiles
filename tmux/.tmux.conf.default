@@ -10,15 +10,15 @@ set -g default-terminal "screen-256color"
 set -ga terminal-overrides ',*256col*:Tc'
 
 # default statusbar colors
-# set-option -g status-bg "#1f2335" #base02
-# set-option -g status-fg "#7aa2f7" #yellow
+set-option -g status-bg black #base02
+set-option -g status-fg yellow #yellow
 
 # Panel border styles
-set -g pane-border-style "fg=#3b4261"
-set -g pane-active-border-style "fg=#7aa2f7"
+set -g pane-border-style "fg=colour25"
+set -g pane-active-border-style "fg=colour169 bg=colour237"
 
 # Color sytle in copy mode for selection highlights
-set-window-option -g mode-style "fg=#7aa2f7,bg=#3b4261"
+set-window-option -g mode-style bg=colour31
 
 
 # display
@@ -31,17 +31,14 @@ set -g set-titles-string '#h #W'  # host Workspace
 set-option -g status on
 set -g status-interval 2
 set -g status-justify centre
-#set -g status-fg "#7aa2f7"
-#set -g status-bg "#1f2335"
-set -g status-style "fg=#7aa2f7,bg=#1f2335"
+set -g status-fg colour231
+set -g status-bg colour234
 set -g status-left-length 150
 set -g status-right-length 150
-
-set -g status-left-style NONE
+set -g window-status-format "#[fg=colour244,bg=colour234] #I #W "  # index Workspace
+set -g window-status-current-format "#[fg=colour255,bg=colour24] #I #W "
 set -g status-left '#{tmux_mode_indicator}#{prefix_highlight}'
 set -g status-right '#{b:pane_current_path} | %Y-%m-%d %H:%M'
-set -g window-status-format "#[fg=#1d202f,bg=#7aa2f7] #I #W "  # index Workspace
-set -g window-status-current-format "#[fg=colour255,bg=#7aa2f7] #I #W "
 
 
 # operation
@@ -76,11 +73,6 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
 set -g @plugin 'MunifTanjim/tmux-mode-indicator'
-
-
-# config for MunifTanjim/tmux-mode-indicator
-set -g @mode_indicator_empty_mode_style "fg=#1d202f,bg=#7aa2f7"
-set -g @mode_indicator_prefix_mode_style "fg=#1d202f,bg=#7aa2f7"
 
 # Configs for tmux-plugins/tmux-prefix-highlight
 set -g @prefix_highlight_fg 'colour255'
