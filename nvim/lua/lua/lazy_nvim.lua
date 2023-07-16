@@ -11,14 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- local plugins = {
---     {
---       "folke/tokyonight.nvim",
---       config = function()
---           vim.cmd[[colorscheme tokyonight-storm]]
---       end
---     }
--- }
 local opts = {
     install = {
         colorscheme = { "tokyonight-storm" }

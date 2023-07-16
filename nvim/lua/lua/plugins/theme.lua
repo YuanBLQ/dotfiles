@@ -11,7 +11,7 @@ return {
             vim.cmd[[colorscheme tokyonight-storm]]
             require("lualine").setup({
                 options = {
-                    theme = 'tokyonight-storm',
+                    theme = 'tokyonight',
                     component_separators = { left = '', right = ''},
                     section_separators = { left = '', right = ''},
                 },
