@@ -75,7 +75,7 @@ end
 # https://github.com/junegunn/fzf
 # set -x FZF_DEFAULT_COMMAND 'fd --type f --exclude .git'
 # https://github.com/junegunn/fzf/issues/634#issuecomment-1008200731
-set -x FZF_DEFAULT_COMMAND 'rg --files --follow --hidden --no-ignore -g "!{**/.git/*,**/.mypy_cache/*}"'
+set -x FZF_DEFAULT_COMMAND 'rg --files --follow --hidden --no-ignore -g "!{**/.git/*,**/.mypy_cache/*,**/__pycache__/*}"'
 
 
 # fish dotenv function
