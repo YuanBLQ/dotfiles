@@ -6,26 +6,26 @@ let g:python3_host_prog = '~/.pyenv/shims/python'
 " Plug
 call plug#begin('~/.config/nvim/plugs')
 Plug 'nvim-tree/nvim-web-devicons'
-
-" Plug 'joshdick/onedark.vim'
-Plug 'folke/tokyonight.nvim'
-
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
+Plug 'windwp/nvim-autopairs'
+
+Plug 'nvim-tree/nvim-tree.lua'
 
 " Plug 'vim-airline/vim-airline'
 Plug 'nvim-lualine/lualine.nvim'
 
+Plug 'lewis6991/gitsigns.nvim'
+
+" Plug 'joshdick/onedark.vim'
+Plug 'folke/tokyonight.nvim'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-Plug 'nvim-tree/nvim-tree.lua'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'dense-analysis/ale'
-
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'windwp/nvim-autopairs'
+Plug 'ranelpadon/python-copy-reference.vim'
 call plug#end()
 
 
@@ -210,14 +210,16 @@ nnoremap <silent><nowait> <space>a :CocDiagnostics<cr>
 nnoremap <silent><nowait> <space>k <Plug>(coc-diagnostic-prev)
 nnoremap <silent><nowait> <space>j <Plug>(coc-diagnostic-next)
 
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
+au FileType go,python,c,cpp,javascript,rust nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gl :call CocAction('jumpDefinition')<CR>
 au FileType go,python,c,cpp,javascript,rust nmap <silent> rf <Plug>(coc-refactor)
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gr <Plug>(coc-references)
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gi <Plug>(coc-implementation)
 au FileType go,python,c,cpp,javascript,rust nmap <silent> gt <Plug>(coc-type-definition)
 au FileType go,python,c,cpp,javascript,rust nmap <silent>  K :call ShowDocumentation()<CR>
-au FileType go,python,c,cpp,javascript,rust nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
@@ -225,6 +227,13 @@ function! ShowDocumentation()
     call feedkeys('K', 'in')
   endif
 endfunction
+
+
+" copy python reference
+nnoremap <A-c> :PythonCopyReferenceDotted<CR>
+" nnoremap <Leader>rp :PythonCopyReferencePytest<CR>
+" format like: from app.foo import bar
+" nnoremap <Leader>ri :PythonCopyReferenceImport<CR>
 
 
 " fzf 配置
@@ -243,9 +252,9 @@ let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-rang
 " command! ProjectFiles execute 'FZF' s:find_git_root()
 
 " 文件搜索
-nmap <c-p> :Files<CR>
+nmap <A-p> :Files<CR>
 " 文件内容搜索
-nmap <c-j> :Rg<CR>
+nmap <A-f> :Rg<CR>
 
 
 " custom defined command
