@@ -18,6 +18,7 @@
 1. Python: `CocInstall coc-pyright`
 2. Golang: `CocInstall coc-go`
 3. Json: `CocInstall coc-json`
+4. color: `CocInstall coc-highlight`
 
 
 ### treesitter 插件

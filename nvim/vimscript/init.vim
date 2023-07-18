@@ -64,6 +64,8 @@ set foldlevel=999
 set list "Show tabs via listchars below, and display end sign after endo fline.
 set listchars=space:·,tab:▸\ ,eol:¬,extends:❯,precedes:❮ "Chars that to display list.
 
+set updatetime=300
+
 
 function! HighlightExtraWhitespace()
   highlight ExtraWhitespace ctermbg=red guibg=#EC7063
@@ -100,9 +102,9 @@ lua << EOF
     -- disable netrw at the very start of your init.lua
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
-    -- empty setup using defaults
-    require("nvim-tree").setup()
-    -- OR setup with some options
+    -- set termguicolors to enable highlight groups
+    vim.opt.termguicolors = true
+
     require("nvim-tree").setup({
         sort_by = "case_sensitive",
         view = {
@@ -113,6 +115,9 @@ lua << EOF
         },
         filters = {
             dotfiles = false,
+        },
+        update_focused_file = {
+            enable = true,
         },
     })
 
@@ -165,14 +170,14 @@ lua << EOF
             section_separators = { left = '', right = ''},
         },
         sections = {
-            lualine_b = {'branch', 'diff', 'diagnostics'},
+            lualine_b = {'branch', 'diff'},
             lualine_c = {
                 {
                    'filename',
                     path = 1,
                 },
             },
-            lualine_x = {'selectioncount', 'encoding'}
+            lualine_x = {'selectioncount', 'diagnostics', 'encoding'}
         }
     }
 
@@ -196,8 +201,7 @@ EOF
 " let g:ale_python_isort_options = '--profile black --ca'
 
 
-set updatetime=300
-
+" coc config
 " Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -210,16 +214,15 @@ nnoremap <silent><nowait> <space>a :CocDiagnostics<cr>
 nnoremap <silent><nowait> <space>k <Plug>(coc-diagnostic-prev)
 nnoremap <silent><nowait> <space>j <Plug>(coc-diagnostic-next)
 
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-au FileType go,python,c,cpp,javascript,rust nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
-au FileType go,python,c,cpp,javascript,rust nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
-au FileType go,python,c,cpp,javascript,rust nmap <silent> gl :call CocAction('jumpDefinition')<CR>
-au FileType go,python,c,cpp,javascript,rust nmap <silent> rf <Plug>(coc-refactor)
-au FileType go,python,c,cpp,javascript,rust nmap <silent> gr <Plug>(coc-references)
-au FileType go,python,c,cpp,javascript,rust nmap <silent> gi <Plug>(coc-implementation)
-au FileType go,python,c,cpp,javascript,rust nmap <silent> gt <Plug>(coc-type-definition)
-au FileType go,python,c,cpp,javascript,rust nmap <silent>  K :call ShowDocumentation()<CR>
+au FileType go,python,c,javascript nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
+au FileType go,python,c,javascript nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
+au FileType go,python,c,javascript nmap <silent> gl :call CocAction('jumpDefinition')<CR>
+au FileType go,python,c,javascript nmap <silent> rf <Plug>(coc-refactor)
+au FileType go,python,c,javascript nmap <silent> gr <Plug>(coc-references)
+au FileType go,python,c,javascript nmap <silent> gi <Plug>(coc-implementation)
+au FileType go,python,c,javascript nmap <silent> gt <Plug>(coc-type-definition)
+au FileType go,python,c,javascript inoremap <silent> <A-k> <C-r>=CocActionAsync('showSignatureHelp')<CR>
+au FileType go,python,c,javascript nmap <silent>  K :call ShowDocumentation()<CR>
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
