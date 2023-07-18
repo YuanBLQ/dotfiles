@@ -1,4 +1,10 @@
 [time]
 disabled = false
-time_format = "%Y-%m-%d %T"
+time_format = '%Y-%m-%d %T'
 
+[python]
+pyenv_prefix = ''
+pyenv_version_name = true
+
+[jobs]
+number_threshold = 1
