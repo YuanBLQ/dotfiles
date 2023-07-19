@@ -8,6 +8,7 @@ call plug#begin('~/.config/nvim/plugs')
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
 Plug 'windwp/nvim-autopairs'
+Plug 'folke/flash.nvim'
 
 Plug 'nvim-tree/nvim-tree.lua'
 
@@ -185,6 +186,21 @@ lua << EOF
         }
     }
 
+    require("flash").setup({
+        mode = "exact",
+        continue = true,
+        search = {
+            incremental = true,
+        },
+        modes = {
+            char = {
+                enabled = true,
+                autohide = true,
+                jump_labels = true,
+                keys = { "f", "F" },
+            }
+        }
+    })
 EOF
 
 
