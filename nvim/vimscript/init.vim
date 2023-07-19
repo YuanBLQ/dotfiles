@@ -80,7 +80,11 @@ autocmd BufWrite * :WS
 
 
 " set max height and width to current window
-nnoremap <c-l> <c-w>_ <c-w><bar>
+nnoremap <c-l> <c-w>_<c-w><bar>
+nnoremap + <c-w>=
+
+noremap H 0
+noremap L $
 
 " copy relative file path of current buffer
 nmap cp :let @+ = expand("%")<cr>
@@ -263,5 +267,6 @@ nmap <A-f> :Rg<CR>
 " custom defined command
 command! NT :NvimTreeFocus
 command! NR :NvimTreeResize 30
+command! DC :call copilot#Dismiss()
 
 
