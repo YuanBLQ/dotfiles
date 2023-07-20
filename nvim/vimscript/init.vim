@@ -206,6 +206,7 @@ EOF
 
 " Only run linters named in ale_linters settings.
 let g:ale_disable_lsp = 1
+let g:ale_use_neovim_diagnostics_api = 0
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
   \   'python': ['ruff', 'mypy'],
