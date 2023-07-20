@@ -1,7 +1,7 @@
 {
     "colors.enable": true,
     "diagnostic.displayByAle": false,
-    "coc.preferences.formatOnSave": true,
+    "coc.preferences.formatOnSave": false,
     "pyright.disableDiagnostics": false,
     "pyright.enable": true,
     "python.formatting.provider": "black",
@@ -13,6 +13,8 @@
         "--ca"
     ],
     "python.linting.enabled": true,
+    "python.linting.ruffEnabled": true,
+    "python.linting.ruffPath": "~/.pyenv/shims/ruff",
     "python.linting.mypyEnabled": true,
     "python.linting.mypyPath": "~/.pyenv/shims/mypy",
     "python.linting.mypyArgs": [

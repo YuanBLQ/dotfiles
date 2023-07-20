@@ -25,7 +25,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 Plug 'ranelpadon/python-copy-reference.vim'
 call plug#end()
 
@@ -82,7 +82,7 @@ autocmd BufWrite * :WS
 
 " set max height and width to current window
 nnoremap <c-l> <c-w>_<c-w><bar>
-nnoremap + <c-w>=
+nnoremap + <c-w>=:NvimTreeResize 30<CR>
 
 noremap H 0
 noremap L $
@@ -122,7 +122,7 @@ lua << EOF
             dotfiles = false,
         },
         update_focused_file = {
-            enable = true,
+            enable = false,
         },
     })
 
@@ -205,20 +205,20 @@ EOF
 
 
 " Only run linters named in ale_linters settings.
-" let g:ale_disable_lsp = 1
-" let g:ale_linters_explicit = 1
-" let g:ale_linters = {
-"   \   'python': ['mypy'],
-"   \   'go': ['gopls'],
-" \}
-" let g:ale_fixers_explicit = 1
-" let g:ale_fixers = {
-"   \   'python': ['black', 'isort'],
-"   \   'go': ['gofmt'],
-" \}
-" let g:ale_fix_on_save = 1
-" let g:python_mypy_show_notes = 1
-" let g:ale_python_isort_options = '--profile black --ca'
+let g:ale_disable_lsp = 1
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+  \   'python': ['ruff', 'mypy'],
+  \   'go': ['gopls'],
+\}
+let g:ale_fixers_explicit = 1
+let g:ale_fixers = {
+  \   'python': ['black', 'isort'],
+  \   'go': ['gofmt'],
+\}
+let g:ale_fix_on_save = 1
+let g:python_mypy_show_notes = 1
+let g:ale_python_isort_options = '--profile black --ca'
 
 
 " coc config
@@ -283,6 +283,8 @@ nmap <A-f> :Rg<CR>
 " custom defined command
 command! NT :NvimTreeFocus
 command! NR :NvimTreeResize 30
+command! NF :NvimTreeFindFile
+
 command! DC :call copilot#Dismiss()
 
 
