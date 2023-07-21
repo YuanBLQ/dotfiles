@@ -1,7 +1,9 @@
 {
     "colors.enable": true,
     "diagnostic.displayByAle": false,
-    "coc.preferences.formatOnSave": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "json"
+    ],
     "json.format.enable": true,
     "pyright.disableDiagnostics": false,
     "pyright.enable": true,
