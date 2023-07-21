@@ -20,6 +20,9 @@ Plug 'lewis6991/gitsigns.nvim'
 " Plug 'joshdick/onedark.vim'
 Plug 'folke/tokyonight.nvim'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -121,7 +124,6 @@ lua << EOF
     vim.g.loaded_netrwPlugin = 1
     -- set termguicolors to enable highlight groups
     vim.opt.termguicolors = true
-
     require("nvim-tree").setup({
         sort_by = "case_sensitive",
         view = {
@@ -137,35 +139,6 @@ lua << EOF
             enable = false,
         },
     })
-
-    -- Hook VimEnter for open nvim tree
-    -- local function open_nvim_tree()
-    --     -- open the tree
-    --     require("nvim-tree.api").tree.open()
-    --     -- move cursor to left window
-    --     vim.cmd("wincmd l")
-    -- end
-    -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
-
-    -- A better solution based on QuitPre that checks if it's the last window
-    -- Ref: https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close#ppwwyyxx
-    -- vim.api.nvim_create_autocmd("QuitPre", {
-    --     callback = function()
-    --         local invalid_win = {}
-    --         local wins = vim.api.nvim_list_wins()
-    --         for _, w in ipairs(wins) do
-    --             local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-    --             if bufname:match("NvimTree_") ~= nil then
-    --                 table.insert(invalid_win, w)
-    --             end
-    --         end
-    --         if #invalid_win == #wins - 1 then
-    --             -- Should quit, so we close all invalid windows.
-    --             for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
-    --         end
-    --     end
-    -- })
-
 
     require("gitsigns").setup()
 
@@ -213,6 +186,8 @@ lua << EOF
             }
         }
     })
+
+    require("telescope").setup({})
 EOF
 
 
@@ -279,7 +254,7 @@ nnoremap <A-c> :PythonCopyReferenceDotted<CR>
 
 
 " fzf 配置
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }    " 窗口形式展示
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }    " 窗口形式展示
 let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'
     \ --bind ctrl-d:preview-down,ctrl-u:preview-up,
     \ctrl-f:preview-page-down,
