@@ -1,10 +1,11 @@
 {
     "colors.enable": true,
     "diagnostic.displayByAle": false,
-    "coc.preferences.formatOnSave": false,
+    "coc.preferences.formatOnSave": true,
+    "json.format.enable": true,
     "pyright.disableDiagnostics": false,
     "pyright.enable": true,
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "none",
     "python.formatting.blackPath": "~/.pyenv/shims/black",
     "python.sortImports.path": "~/.pyenv/shims/isort",
     "python.sortImports.args": [
