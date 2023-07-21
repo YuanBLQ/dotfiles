@@ -224,6 +224,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+inoremap <silent><expr> <a-cr> coc#refresh()
 nnoremap <silent><nowait> <space>a :CocDiagnostics<cr>
 nnoremap <silent><nowait> <space>k <Plug>(coc-diagnostic-prev)
 nnoremap <silent><nowait> <space>j <Plug>(coc-diagnostic-next)
