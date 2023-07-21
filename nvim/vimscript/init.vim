@@ -96,8 +96,6 @@ noremap! <c-f> <Right>
 noremap! <c-b> <Left>
 noremap! <c-d> <Del>
 noremap! <c-h> <BS>
-noremap! <c-n> <Down>
-noremap! <c-p> <Up>
 noremap! <a-b> <S-Left>
 noremap! <a-f> <S-Right>
 
@@ -218,14 +216,20 @@ lua << EOF
 EOF
 
 
+" flash key map
+nnoremap <c-w>f <cmd>lua require('flash').jump()<cr>
+nnoremap <c-w>F <cmd>lua require('flash').jump({search = { forward = false }})<cr>
+nnoremap <c-w>r <cmd>lua require('flash').remote()<cr>
+
+
 " Only run linters named in ale_linters settings.
 let g:ale_disable_lsp = 1
 let g:ale_use_neovim_diagnostics_api = 0
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-  \   'python': ['ruff', 'mypy'],
-  \   'go': ['gopls'],
-\}
+"let g:ale_linters_explicit = 1
+"let g:ale_linters = {
+"  \   'python': ['ruff', 'mypy'],
+"  \   'go': ['gopls'],
+"\}
 let g:ale_fixers_explicit = 1
 let g:ale_fixers = {
   \   'python': ['black', 'isort'],
@@ -299,6 +303,8 @@ nmap <A-f> :Rg<CR>
 command! NT :NvimTreeFocus
 command! NR :NvimTreeResize 30
 command! NF :NvimTreeFindFile
+
+command! GR :Gitsigns reset_hunk
 
 command! DC :call copilot#Dismiss()
 
