@@ -80,16 +80,30 @@ command! WS :%s/\s\+$//e
 autocmd BufWrite * :WS
 
 
+""""""""""" key map """""""""""
 " set max height and width to current window
 nnoremap <c-l> <c-w>_<c-w><bar>
 nnoremap + <c-w>=:NvimTreeResize 30<CR>
 
+" move to the begining/end of the line
 noremap H 0
 noremap L $
 
+" emacs-style key bindings in cmd & ins mode
+noremap! <c-a> <Home>
+noremap! <c-e> <End>
+noremap! <c-f> <Right>
+noremap! <c-b> <Left>
+noremap! <c-d> <Del>
+noremap! <c-h> <BS>
+noremap! <c-n> <Down>
+noremap! <c-p> <Up>
+noremap! <a-b> <S-Left>
+noremap! <a-f> <S-Right>
+
 " copy relative file path of current buffer
 nmap cp :let @+ = expand("%")<cr>
-
+"""""""""""""""""""""""""""""""
 
 " " joshdick/onedark.vim
 " colorscheme onedark
