@@ -117,7 +117,6 @@ nmap cp :let @+ = expand("%")<cr>
 colorscheme tokyonight-storm
 
 
-" cmp
 lua << EOF
     -- disable netrw at the very start of your init.lua
     vim.g.loaded_netrw = 1
@@ -269,14 +268,13 @@ let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-rang
 " endfunction
 " command! ProjectFiles execute 'FZF' s:find_git_root()
 
-" 文件搜索
-nmap <A-p> :Files<CR>
-" 文件内容搜索
-nmap <A-f> :Rg<CR>
+nmap <a-p> :Files<CR>
+nmap <a-f> :Rg<CR>
+nmap <a-w> :Windows<CR>
 
 
 " custom defined command
-command! NT :NvimTreeFocus
+command! NT :NvimTreeToggle
 command! NR :NvimTreeResize 30
 command! NF :NvimTreeFindFile
 
