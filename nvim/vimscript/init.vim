@@ -9,6 +9,7 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
 Plug 'windwp/nvim-autopairs'
 Plug 'folke/flash.nvim'
+Plug 'numToStr/Comment.nvim'
 
 Plug 'nvim-tree/nvim-tree.lua'
 
@@ -38,6 +39,7 @@ syntax on
 
 set mouse=
 set nowrap
+set ignorecase
 
 set noswapfile
 set undodir=~/.config/nvim/undodir              " 历史记录文件地址
@@ -187,6 +189,8 @@ lua << EOF
     })
 
     require("telescope").setup({})
+
+    require("Comment").setup({})
 EOF
 
 
