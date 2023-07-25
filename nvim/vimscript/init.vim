@@ -169,6 +169,15 @@ lua << EOF
                 },
             },
             lualine_x = {'selectioncount', 'diagnostics', 'encoding'}
+        },
+        inactive_sections = {
+            lualine_c = {
+                {
+                   'filename',
+                    path = 1,
+                    color = { fg = '#c0caf5' }
+                },
+            },
         }
     }
 
