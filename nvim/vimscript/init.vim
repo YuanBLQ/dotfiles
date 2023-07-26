@@ -204,9 +204,8 @@ EOF
 
 
 " flash key map
-nnoremap <c-w>f <cmd>lua require('flash').jump()<cr>
-nnoremap <c-w>F <cmd>lua require('flash').jump({search = { forward = false }})<cr>
-nnoremap <c-w>r <cmd>lua require('flash').remote()<cr>
+nnoremap <a-j> <cmd>lua require('flash').jump()<cr>
+nnoremap <a-J> <cmd>lua require('flash').jump({search = { forward = false }})<cr>
 
 
 " Only run linters named in ale_linters settings.
