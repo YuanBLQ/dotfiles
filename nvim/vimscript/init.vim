@@ -211,18 +211,20 @@ nnoremap <a-J> <cmd>lua require('flash').jump({search = { forward = false }})<cr
 " Only run linters named in ale_linters settings.
 let g:ale_disable_lsp = 1
 let g:ale_use_neovim_diagnostics_api = 0
+
 "let g:ale_linters_explicit = 1
 "let g:ale_linters = {
 "  \   'python': ['ruff', 'mypy'],
 "  \   'go': ['gopls'],
 "\}
+"let g:ale_python_mypy_show_notes = 1
+
 let g:ale_fixers_explicit = 1
 let g:ale_fixers = {
   \   'python': ['black', 'isort'],
   \   'go': ['gofmt'],
 \}
 let g:ale_fix_on_save = 1
-let g:python_mypy_show_notes = 1
 let g:ale_python_isort_options = '--profile black --ca'
 
 
@@ -289,8 +291,6 @@ nmap <a-w> :Windows<CR>
 command! NT :NvimTreeToggle
 command! NR :NvimTreeResize 30
 command! NF :NvimTreeFindFile
-
-command! GR :Gitsigns reset_hunk
 
 command! DC :call copilot#Dismiss()
 

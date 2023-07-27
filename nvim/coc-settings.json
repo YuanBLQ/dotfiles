@@ -4,6 +4,7 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "json"
     ],
+    "coc.preferences.formatOnSave": false,
     "json.format.enable": true,
     "pyright.disableDiagnostics": false,
     "pyright.enable": true,
@@ -24,6 +25,7 @@
         "--follow-imports=silent",
         "--show-column-numbers"
     ],
+    "python.linting.pylintEnabled": false,
     "languageserver": {
         "golang": {
             "command": "gopls",
