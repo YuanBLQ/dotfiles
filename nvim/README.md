@@ -27,3 +27,7 @@
 2. Golang: `TSInstall go`
 3. Proto: `TSInstall proto`
 
+
+### ale 插件
+
+1. protobuf lint & format: `brew install bufbuild/buf/buf`
