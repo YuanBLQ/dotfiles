@@ -28,6 +28,6 @@
 3. Proto: `TSInstall proto`
 
 
-### ale 插件
+### ale 依赖配置
 
 1. protobuf lint & format: `brew install bufbuild/buf/buf`
