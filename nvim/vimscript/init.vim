@@ -224,6 +224,7 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
   \  'python': [ 'black', 'isort' ],
   \  'go': [ 'gofmt' ],
+  \  'proto': [ 'clang-format' ],
 \}
 "  \  'proto': [ 'buf-format' ]
 let g:ale_python_isort_options = '--profile black --ca'
