@@ -31,3 +31,4 @@
 ### ale 依赖配置
 
 1. protobuf lint & format: `brew install bufbuild/buf/buf`
+2. clang-format: `brew install clang-format`
