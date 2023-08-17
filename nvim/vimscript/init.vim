@@ -149,6 +149,11 @@ lua << EOF
             topdelete    = { text = '‾' },
             changedelete = { text = '~' },
             untracked    = { text = '┆' },
+        },
+        current_line_blame = true,
+        current_line_blame_opts = {
+            delay = 300,
+            ignore_whitespace = true,
         }
     })
 
@@ -240,7 +245,7 @@ let g:ale_python_isort_options = '--profile black --ca'
 
 " coc config
 " Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
