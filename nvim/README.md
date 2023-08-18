@@ -27,6 +27,8 @@
 2. Golang: `TSInstall go`
 3. Proto: `TSInstall proto`
 4. Lua: `TSInstall lua`
+5. Markdow `TSInstall markdown`
+6. MarkdowInline `TSInstall markdown_inline`
 
 
 ### ale 依赖配置
@@ -49,3 +51,7 @@ setup:
 ```
 :Copilot setup
 ```
+
+### Q&A
+
+-  从 vim-plug 切换到 lazy.nvim，安装 treesitter 会报错，删掉 `$NVIM-HOME/lib/nvim/parser/` 下所有的 `.so` 文件即可。
