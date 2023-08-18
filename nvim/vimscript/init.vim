@@ -13,12 +13,10 @@ Plug 'numToStr/Comment.nvim'
 
 Plug 'nvim-tree/nvim-tree.lua'
 
-" Plug 'vim-airline/vim-airline'
 Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'lewis6991/gitsigns.nvim'
 
-" Plug 'joshdick/onedark.vim'
 Plug 'folke/tokyonight.nvim'
 
 Plug 'nvim-lua/plenary.nvim'

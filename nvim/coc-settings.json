@@ -5,6 +5,7 @@
         "json"
     ],
     "coc.preferences.formatOnSave": false,
+    "coc.preferences.jumpCommand": "split",
     "json.format.enable": true,
     "pyright.disableDiagnostics": false,
     "pyright.enable": true,

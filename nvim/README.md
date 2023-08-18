@@ -33,3 +33,19 @@
 
 1. protobuf lint & format: `brew install bufbuild/buf/buf`
 2. clang-format: `brew install clang-format`
+
+
+### copilot
+
+install:
+
+```
+git clone https://github.com/github/copilot.vim.git \
+  ~/.config/nvim/pack/github/start/copilot.vim
+```
+
+setup:
+
+```
+:Copilot setup
+```
