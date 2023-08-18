@@ -26,6 +26,7 @@
 1. Python: `TSInstall python`
 2. Golang: `TSInstall go`
 3. Proto: `TSInstall proto`
+3. Lua: `TSInstall lua`
 
 
 ### ale 依赖配置
