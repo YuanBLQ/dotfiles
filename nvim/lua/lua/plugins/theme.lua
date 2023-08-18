@@ -16,20 +16,25 @@ return {
                     section_separators = { left = '', right = ''},
                 },
                 sections = {
-                    lualine_b = {'branch', 'diff', 'diagnostics'},
+                    lualine_b = {'branch', 'diff'},
                     lualine_c = {
                         {
                             'filename',
                             path = 1,
                         },
                     },
-                    lualine_x = {'selectioncount', 'encoding'}
+                    lualine_x = {'selectioncount', 'diagnostics', 'encoding'}
+                },
+                inactive_sections = {
+                    lualine_c = {
+                        {
+                           'filename',
+                            path = 1,
+                            color = { fg = '#c0caf5' }
+                        },
+                    },
                 }
             })
         end
-    },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        config = true,
     }
 }

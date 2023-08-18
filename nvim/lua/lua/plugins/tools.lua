@@ -19,6 +19,9 @@ return {
             -- disable netrw at the very start of your init.lua
             vim.g.loaded_netrw = 1
             vim.g.loaded_netrwPlugin = 1
+            -- set termguicolors to enable highlight groups
+            vim.opt.termguicolors = true
+
 
             vim.api.nvim_create_user_command("NT", ":NvimTreeFocus", {})
             vim.api.nvim_create_user_command("NR", ":NvimTreeResize 30", {})
@@ -33,6 +36,9 @@ return {
                 },
                 filters = {
                     dotfiles = false,
+                },
+                update_focused_file = {
+                    enable = false,
                 },
             })
         end
