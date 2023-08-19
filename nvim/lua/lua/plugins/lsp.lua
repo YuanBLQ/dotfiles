@@ -40,10 +40,14 @@ return {
         })
 
         require("neodev").setup()
-        require("lspsaga").setup()
+        require("lspsaga").setup({
+            symbol_in_winbar = {
+                enable = false
+            }
+        })
         require("mason").setup()
 
-        local servers = {
+        local servers_by_mason = {
             lua_ls = {
                 settings = {
                     Lua = {
@@ -52,12 +56,17 @@ return {
                     }
                 }
             },
-            pyright = {},
             jsonls = {},
         }
         require("mason-lspconfig").setup({
-            ensure_installed = vim.tbl_keys(servers),
+            ensure_installed = vim.tbl_keys(servers_by_mason),
         })
+
+        local servers_by_manually = {
+            pyright = {},
+        }
+
+        local servers = vim.tbl_deep_extend("keep", servers_by_mason, servers_by_manually)
 
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
         for server, config in pairs(servers) do
