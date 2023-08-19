@@ -4,8 +4,6 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig",
         "folke/neodev.nvim",  -- fix vim lsp
-        "nvimdev/lspsaga.nvim",
-        "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
         -- Use LspAttach autocommand to only map the following keys
@@ -19,20 +17,25 @@ return {
                 -- Buffer local mappings.
                 -- See `:help vim.lsp.*` for documentation on any of the below functions
                 local opts = { buffer = ev.buf }
-                vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-                vim.keymap.set('n', 'K', '<CMD>Lspsaga hover_doc<CR>', opts)
-                vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-                vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-                vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-                vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-                vim.keymap.set('n', '<space>wl', function()
-                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+
+                vim.keymap.set('n', 'gl', vim.lsp.buf.definition, opts)
+                vim.keymap.set('n', 'gd', function()
+                    vim.cmd("split")
+                    vim.lsp.buf.definition()
                 end, opts)
-                vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-                vim.keymap.set('n', 'rn', "<CMD>Lspsaga rename ++project<CR>", opts)
-                vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+                vim.keymap.set('n', 'gv', function()
+                    vim.cmd("vsplit")
+                    vim.lsp.buf.definition()
+                end, opts)
+
+                vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+                vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
                 vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+                vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+
+                vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+                vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+                vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
                 vim.keymap.set('n', '<space>f', function()
                     vim.lsp.buf.format { async = true }
                 end, opts)
@@ -40,14 +43,9 @@ return {
         })
 
         require("neodev").setup()
-        require("lspsaga").setup({
-            symbol_in_winbar = {
-                enable = false
-            }
-        })
         require("mason").setup()
 
-        local servers_by_mason = {
+        local auto_installed_servers = {
             lua_ls = {
                 settings = {
                     Lua = {
@@ -59,25 +57,8 @@ return {
             jsonls = {},
         }
         require("mason-lspconfig").setup({
-            ensure_installed = vim.tbl_keys(servers_by_mason),
+            ensure_installed = vim.tbl_keys(auto_installed_servers),
         })
 
-        local servers_by_manually = {
-            pyright = {},
-        }
-
-        local servers = vim.tbl_deep_extend("keep", servers_by_mason, servers_by_manually)
-
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        for server, config in pairs(servers) do
-            require("lspconfig")[server].setup(
-                vim.tbl_deep_extend("keep",
-                    {
-                        capabilities = capabilities,
-                    },
-                    config
-                )
-            )
-        end
     end
 }
