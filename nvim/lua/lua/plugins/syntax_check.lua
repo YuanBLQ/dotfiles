@@ -6,7 +6,7 @@ return {
 
         vim.g.ale_linters_explicit = 1
         -- vim.g.ale_linters = {
-        --     python = { 'pyright', 'ruff', 'mypy' }
+        --     python = { 'ruff', 'mypy' }
         -- }
 
         vim.g.ale_fix_on_save = 1
