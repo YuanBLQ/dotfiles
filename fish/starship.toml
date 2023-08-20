@@ -2,6 +2,10 @@
 disabled = false
 time_format = '%Y-%m-%d %T'
 
+[status]
+disabled = false
+symbol = '❌'
+
 [python]
 pyenv_prefix = ''
 pyenv_version_name = true
