@@ -1,12 +1,11 @@
 {
     "colors.enable": true,
     "diagnostic.displayByAle": false,
-    "coc.preferences.formatOnSaveFiletypes": [
-        "json"
-    ],
-    "coc.preferences.formatOnSave": false,
-    "coc.preferences.jumpCommand": "split",
     "json.format.enable": true,
+    "[json]": {
+        "coc.preferences.formatOnSave": true
+    },
+    "coc.preferences.formatOnSave": false,
     "pyright.disableDiagnostics": false,
     "pyright.enable": true,
     "python.formatting.provider": "none",

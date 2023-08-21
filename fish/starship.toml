@@ -4,7 +4,7 @@ time_format = '%Y-%m-%d %T'
 
 [status]
 disabled = false
-symbol = '❌'
+symbol = '👺'
 
 [python]
 pyenv_prefix = ''
