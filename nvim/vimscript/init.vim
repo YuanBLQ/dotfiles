@@ -303,7 +303,7 @@ nmap <a-w> :Windows<CR>
 " custom defined command
 command! NT :NvimTreeToggle
 command! NR :NvimTreeResize 30
-command! NF :NvimTreeFindFile
+command! NF :NvimTreeFindFile | :NvimTreeResize 30
 
 command! DC :call copilot#Dismiss()
 

@@ -5,6 +5,7 @@
     "[json]": {
         "coc.preferences.formatOnSave": true
     },
+    "coc.preferences.useQuickfixForLocations": true,
     "coc.preferences.formatOnSave": false,
     "pyright.disableDiagnostics": false,
     "pyright.enable": true,
