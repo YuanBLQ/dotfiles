@@ -1,12 +1,13 @@
 {
     "colors.enable": true,
     "diagnostic.displayByAle": false,
+    "coc.preferences.formatOnSave": false,
     "json.format.enable": true,
     "[json]": {
         "coc.preferences.formatOnSave": true
     },
     "coc.preferences.useQuickfixForLocations": true,
-    "coc.preferences.formatOnSave": false,
+    "coc.preferences.jumpCommand": "edit",
     "pyright.disableDiagnostics": false,
     "pyright.enable": true,
     "python.formatting.provider": "none",

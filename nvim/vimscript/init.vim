@@ -7,6 +7,7 @@ let g:python3_host_prog = '~/.pyenv/shims/python'
 call plug#begin('~/.config/nvim/plugs')
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
+Plug 'yssl/QFEnter'
 Plug 'windwp/nvim-autopairs'
 Plug 'folke/flash.nvim'
 Plug 'numToStr/Comment.nvim'
@@ -298,6 +299,12 @@ let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-rang
 nmap <a-p> :Files<CR>
 nmap <a-f> :Rg<CR>
 nmap <a-w> :Windows<CR>
+
+
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.open = ['<CR>']
+let g:qfenter_keymap.vopen = ['<c-v>']
+let g:qfenter_keymap.hopen = ['<c-x>']
 
 
 " custom defined command
