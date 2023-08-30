@@ -6,19 +6,22 @@ let g:python3_host_prog = '~/.pyenv/shims/python'
 " Plug
 call plug#begin('~/.config/nvim/plugs')
 Plug 'nvim-tree/nvim-web-devicons'
+
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
 Plug 'yssl/QFEnter'
 Plug 'windwp/nvim-autopairs'
 Plug 'folke/flash.nvim'
 Plug 'numToStr/Comment.nvim'
 
-Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
 
 Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'folke/tokyonight.nvim'
+
+Plug 'vinnymeller/swagger-preview.nvim', {'on': ['SwaggerPreview', 'SwaggerPreviewToggle'], 'do': 'sudo npm install -g swagger-ui-watcher'}
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
@@ -158,7 +161,7 @@ lua << EOF
 
     require("nvim-autopairs").setup {}
 
-    require'nvim-treesitter.configs'.setup {
+    require('nvim-treesitter.configs').setup {
         auto_install = false,
 
         highlight = {
@@ -213,6 +216,13 @@ lua << EOF
     require("telescope").setup({})
 
     require("Comment").setup({})
+
+    require("swagger-preview").setup({
+        -- The port to run the preview server on
+        port = 8730,
+        -- The host to run the preview server on
+        host = "localhost",
+    })
 EOF
 
 
@@ -228,9 +238,9 @@ let g:ale_use_neovim_diagnostics_api = 1
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
   \  'proto': [ 'buf-lint' ],
+  \  'go': ['gopls'],
 \}
 "  \  'python': ['ruff', 'mypy'],
-"  \  'go': ['gopls'],
 "let g:ale_python_mypy_show_notes = 1
 
 let g:ale_fix_on_save = 1
@@ -314,4 +324,5 @@ command! NF :NvimTreeFindFile | :NvimTreeResize 30
 
 command! DC :call copilot#Dismiss()
 
+command! -range AD <line1>,<line2> :CocCommand cSpell.addWordToDictionary
 

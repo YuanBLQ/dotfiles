@@ -39,5 +39,30 @@
                 ".git/"
             ]
         }
-    }
+    },
+    "cSpell.ignoreWords": [
+        "pyenv",
+        "mypy",
+        "isort",
+        "gopls",
+        "pylint",
+        "grpc"
+    ],
+    "cSpell.userWords": [
+      "folke",
+      "gofmt",
+      "hopen",
+      "junegunn",
+      "karb",
+      "neoclide",
+      "proto",
+      "pytest",
+      "qfenter",
+      "ranelpadon",
+      "simeji",
+      "vopen",
+      "windwp",
+      "winresizer",
+      "yssl"
+    ]
 }
