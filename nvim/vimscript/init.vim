@@ -299,9 +299,8 @@ nnoremap <A-c> :PythonCopyReferenceDotted<CR>
 " fzf 配置
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }    " 窗口形式展示
 let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'
-    \ --bind ctrl-d:preview-down,ctrl-u:preview-up,
-    \ctrl-f:preview-page-down,
-    \ctrl-b:preview-page-up"
+    \ --bind ctrl-j:preview-down,
+    \ctrl-k:preview-up"
 
 " ProjectFiles tries to locate files relative to the git root contained in
 " NerdTree, falling back to the current NerdTree dir if not available
