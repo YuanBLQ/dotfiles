@@ -12,6 +12,7 @@ Plug 'yssl/QFEnter'
 Plug 'windwp/nvim-autopairs'
 Plug 'folke/flash.nvim'
 Plug 'numToStr/Comment.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
 
@@ -71,6 +72,7 @@ set foldlevel=999
 
 set list "Show tabs via listchars below, and display end sign after endo fline.
 set listchars=space:·,tab:▸\ ,eol:¬,extends:❯,precedes:❮ "Chars that to display list.
+set termguicolors
 
 set updatetime=300
 
@@ -122,11 +124,14 @@ colorscheme tokyonight-storm
 
 
 lua << EOF
+    require("indent_blankline").setup {
+        show_current_context = true,
+        show_current_context_start = false,
+    }
+
     -- disable netrw at the very start of your init.lua
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
-    -- set termguicolors to enable highlight groups
-    vim.opt.termguicolors = true
     require("nvim-tree").setup({
         sort_by = "case_sensitive",
         view = {
