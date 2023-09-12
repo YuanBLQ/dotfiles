@@ -18,6 +18,7 @@ Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
 Plug 'nvim-lualine/lualine.nvim'
 
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'sindrets/diffview.nvim'
 
 Plug 'folke/tokyonight.nvim'
 
