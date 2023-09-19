@@ -1,5 +1,6 @@
 {
     "colors.enable": true,
+    "inlayHint.display": false,
     "diagnostic.displayByAle": false,
     "coc.preferences.formatOnSave": false,
     "json.format.enable": true,
