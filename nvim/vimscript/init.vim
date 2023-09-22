@@ -7,7 +7,7 @@ call plug#begin('~/.config/nvim/plugs')
 Plug 'nvim-tree/nvim-web-devicons'
 
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
-" Plug 'yssl/QFEnter'
+Plug 'yssl/QFEnter'
 Plug 'windwp/nvim-autopairs'
 Plug 'folke/flash.nvim'
 Plug 'numToStr/Comment.nvim'
@@ -215,24 +215,19 @@ nnoremap <A-c> :PythonCopyReferenceDotted<CR>
 
 
 " fzf 配置
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }    " 窗口形式展示
+" select some results to the quickfix list: https://github.com/junegunn/fzf.vim/issues/192#issuecomment-249217695
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }    " 浮窗形式展示
+" let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'yoffset': 1, 'border': 'none' } }  " 底部窗口
 let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}'
-    \ --bind ctrl-j:preview-down,
-    \ctrl-k:preview-up"
-
-" ProjectFiles tries to locate files relative to the git root contained in
-" NerdTree, falling back to the current NerdTree dir if not available
-" see https://github.com/junegunn/fzf.vim/issues/47#issuecomment-160237795
-" function! s:find_git_root()
-"     return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-" endfunction
-" command! ProjectFiles execute 'FZF' s:find_git_root()
+    \ --bind ctrl-j:preview-down,ctrl-k:preview-up
+    \ --color hl:underline,hl+:underline"
 
 nmap <a-p> :Files<CR>
 nmap <a-f> :Rg<CR>
 nmap <a-w> :Windows<CR>
 
 
+" QFEnter
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.open = ['<CR>']
 let g:qfenter_keymap.vopen = ['<c-v>']
