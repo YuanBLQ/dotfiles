@@ -36,6 +36,7 @@ set backspace=2
 set foldmethod=indent                           " 按照缩进折叠
 set foldlevel=999
 
+" 空白符可视化
 set list "Show tabs via listchars below, and display end sign after endo fline.
 set listchars=space:·,tab:▸\ ,eol:¬,extends:❯,precedes:❮ "Chars that to display list.
 

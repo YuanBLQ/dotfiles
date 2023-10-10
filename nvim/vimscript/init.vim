@@ -11,7 +11,7 @@ Plug 'yssl/QFEnter'
 Plug 'windwp/nvim-autopairs'
 Plug 'folke/flash.nvim'
 Plug 'numToStr/Comment.nvim'
-Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.8'}
 
 Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
 
