@@ -82,3 +82,9 @@ nmap cp :let @+ = expand("%")<cr>
 " reconfigure it to use <C-j> instead
 " ref: https://unix.stackexchange.com/questions/150093/vim-delay-when-using-ctrlc-but-only-in-sql-files
 let g:ftplugin_sql_omni_key = '<C-j>'
+
+" send changing words to the black hole
+" ref:https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
+nnoremap c "_d
+vnoremap c "_d
+vnoremap p "_dP
