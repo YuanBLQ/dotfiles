@@ -64,6 +64,12 @@ nnoremap + <c-w>=:NvimTreeResize 30<CR>
 noremap H 0
 noremap L $
 
+" move between tabs
+nnoremap <a-l> :tabN<cr>
+nnoremap <a-h> :tabp<cr>
+nnoremap <a-n> :tabnew<cr>
+nnoremap <a-N> :tabnew %<cr>
+
 " emacs-style key bindings in cmd & ins mode
 noremap! <c-a> <Home>
 noremap! <c-e> <End>
@@ -76,15 +82,19 @@ noremap! <a-f> <S-Right>
 
 " copy relative file path of current buffer
 nmap cp :let @+ = expand("%")<cr>
+
+" send changing words to the black hole
+" ref:https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
+nnoremap c "_d
+vnoremap c "_di
+
+nnoremap s "_d
+vnoremap s "_di
+
+vnoremap p "_dP
 """""""""""""""""""""""""""""""
 
 " ftplugin installs a buffer-local mapping for Ctrl-C
 " reconfigure it to use <C-j> instead
 " ref: https://unix.stackexchange.com/questions/150093/vim-delay-when-using-ctrlc-but-only-in-sql-files
 let g:ftplugin_sql_omni_key = '<C-j>'
-
-" send changing words to the black hole
-" ref:https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
-nnoremap c "_d
-vnoremap c "_d
-vnoremap p "_dP
