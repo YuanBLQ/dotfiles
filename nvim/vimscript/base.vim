@@ -65,7 +65,7 @@ noremap H 0
 noremap L $
 
 " move between tabs
-nnoremap <a-l> :tabN<cr>
+nnoremap <a-l> :tabn<cr>
 nnoremap <a-h> :tabp<cr>
 nnoremap <a-n> :tabnew<cr>
 nnoremap <a-N> :tabnew %<cr>
