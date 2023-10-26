@@ -5,6 +5,7 @@ source ~/.config/nvim/base.vim
 " Plug
 call plug#begin('~/.config/nvim/plugs')
 Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-lua/plenary.nvim'
 
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
 Plug 'yssl/QFEnter'
@@ -12,6 +13,7 @@ Plug 'windwp/nvim-autopairs'
 Plug 'folke/flash.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.8'}
+Plug 'folke/todo-comments.nvim'
 
 Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
 
@@ -25,7 +27,6 @@ Plug 'folke/tokyonight.nvim'
 " 'do': 'sudo npm install -g swagger-ui-watcher'
 Plug 'vinnymeller/swagger-preview.nvim', {'on': ['SwaggerPreview', 'SwaggerPreviewToggle']}
 
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -42,6 +43,34 @@ colorscheme tokyonight-storm
 
 
 lua << EOF
+    require("todo-comments").setup({
+        -- keywords recognized as todo comments
+        keywords = {
+            FIX = {
+                icon = " ", -- icon used for the sign, and in search results
+                color = "error", -- can be a hex color, or a named color (see below)
+                alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+                -- signs = false, -- configure signs for some keywords individually
+            },
+            TODO = { icon = " ", color = "error" },
+            HACK = { icon = " ", color = "warning" },
+            WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+            PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+            NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+            TEST = { icon = "⏲ ", color = "test", alt = { "TESTING" } },
+        },
+        -- list of named colors where we try to extract the guifg from the
+        -- list of highlight groups or use the hex color if hl not found as a fallback
+        colors = {
+            error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+            warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
+            info = { "DiagnosticInfo", "#2563EB" },
+            hint = { "DiagnosticHint", "#10B981" },
+            default = { "Identifier", "#7C3AED" },
+            test = { "Identifier", "#FF00FF" },
+        },
+    })
+
     require("indent_blankline").setup {
         show_current_context = true,
         show_current_context_start = false,
@@ -233,6 +262,10 @@ let g:qfenter_keymap.open = ['<CR>']
 let g:qfenter_keymap.vopen = ['<c-v>']
 let g:qfenter_keymap.hopen = ['<c-x>']
 
+" todo-comment
+" list todo-comment of current file in quickfix
+" Ref: https://github.com/folke/todo-comments.nvim/issues/110
+nmap <a-d> :exe ":TodoQuickFix cwd=" .. fnameescape(expand("%"))<CR>
 
 " custom defined command
 command! NT :NvimTreeToggle
