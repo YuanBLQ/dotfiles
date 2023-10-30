@@ -68,8 +68,8 @@ noremap L $
 nnoremap <a-l> :tabn<cr>
 nnoremap <a-h> :tabp<cr>
 nnoremap <a-n> :tabnew<cr>
-" 新开一个tab，并跳转到之前tab中的行
-nnoremap <a-N> :exe ":tabnew % "<cr> \| :exe "normal \<c-o>"<cr>
+nnoremap <a-N> :exe ":tabnew +" .. line(".") .. " %"<cr>
+"nnoremap <a-N> :exe ":tabnew % "<cr> \| :exe "normal \<c-o>"<cr>
 
 " emacs-style key bindings in cmd & ins mode
 noremap! <c-a> <Home>
