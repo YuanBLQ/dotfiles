@@ -4,37 +4,62 @@ source ~/.config/nvim/base.vim
 
 " Plug
 call plug#begin('~/.config/nvim/plugs')
+" commit: 11eb26fc166742db8d1e8a6f5a7de9df37b09aae
 Plug 'nvim-tree/nvim-web-devicons'
+" commit: 50012918b2fc8357b87cff2a7f7f0446e47da174
 Plug 'nvim-lua/plenary.nvim'
 
+" commit: 9bd559a03ccec98a458e60c705547119eb5350f3
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
+" commit: 426c04312ae67ac28dce38ccc5fafdd1ed4a3d9f
 Plug 'yssl/QFEnter'
+" commit: 0f04d78619cce9a5af4f355968040f7d675854a1
 Plug 'windwp/nvim-autopairs'
+" commit: 48817af25f51c0590653bbc290866e4890fe1cbe
 Plug 'folke/flash.nvim'
+" commit: 0236521ea582747b58869cb72f70ccfa967d2e89
 Plug 'numToStr/Comment.nvim'
+" commit: 9637670896b68805430e2f72cf5d16be5b97a22a
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.8'}
+" commit: 4a6737a8d70fe1ac55c64dfa47fcb189ca431872
 Plug 'folke/todo-comments.nvim'
 
+" commit: 80cfeadf179d5cba76f0f502c71dbcff1b515cd8
 Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
 
+" commit: 2248ef254d0a1488a72041cfb45ca9caada6d994
 Plug 'nvim-lualine/lualine.nvim'
 
+" commit: af0f583cd35286dd6f0e3ed52622728703237e50
 Plug 'lewis6991/gitsigns.nvim'
+" commit: d38c1b5266850f77f75e006bcc26213684e1e141
 Plug 'sindrets/diffview.nvim'
 
+" commit: 46eaf8918b347906789df296143117774e827616
+Plug 'tpope/vim-fugitive'
+
+" commit: f247ee700b569ed43f39320413a13ba9b0aef0db
 Plug 'folke/tokyonight.nvim'
 
 " 'do': 'sudo npm install -g swagger-ui-watcher'
+" commit: 4e1db32e7934c57d653846d5d297f7ea9ddb6ee8
 Plug 'vinnymeller/swagger-preview.nvim', {'on': ['SwaggerPreview', 'SwaggerPreviewToggle']}
 
+" commit: 776b509f80dd49d8205b9b0d94485568236d1192
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 
+" commit: 7320b7df62039c879c4f609bca946ea09b438a98
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" commit: 1e054c1d075d87903647db9320116d360eb8b024
 Plug 'junegunn/fzf.vim'
 
+" commit: 7b9e1ef0a1399907c51d23b6080b94a5aba4a654
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" commit: c0da2013d1cef768c00f3f0b7f365fe19a10bca3
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" commit: 50e237facda4b9c3761c3f3e9df185cfdf3d91e8
 Plug 'dense-analysis/ale'
+" commit: 8172d0ce83d730820d9497fd2e988046022d0b99
 Plug 'ranelpadon/python-copy-reference.vim'
 call plug#end()
 
