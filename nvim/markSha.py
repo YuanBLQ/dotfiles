@@ -48,9 +48,8 @@ def refresh_commit_record():
         # 保留原始行数据
         new_lines.append(line)
 
-    # with open(NVIM_PLUG_FILE, "w") as f:
-    #     f.write("\n".join(new_lines))
-    print("\n".join(new_lines))
+    with open(NVIM_PLUG_FILE, "w") as f:
+        f.write("\n".join(new_lines))
 
 
 if __name__ == "__main__":

@@ -4,9 +4,9 @@ source ~/.config/nvim/base.vim
 
 " Plug
 call plug#begin('~/.config/nvim/plugs')
-" commit: 11eb26fc166742db8d1e8a6f5a7de9df37b09aae
+" commit: 5efb8bd06841f91f97c90e16de85e96d57e9c862
 Plug 'nvim-tree/nvim-web-devicons'
-" commit: 50012918b2fc8357b87cff2a7f7f0446e47da174
+" commit: 366b0837486f60ae0e7550c15de8ff66d057c4cd
 Plug 'nvim-lua/plenary.nvim'
 
 " commit: 9bd559a03ccec98a458e60c705547119eb5350f3
@@ -24,15 +24,15 @@ Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.8'}
 " commit: 4a6737a8d70fe1ac55c64dfa47fcb189ca431872
 Plug 'folke/todo-comments.nvim'
 
-" commit: 80cfeadf179d5cba76f0f502c71dbcff1b515cd8
+" commit: 05f55c1fd6470b31627655c528245794e3cd4b2c
 Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
 
 " commit: 2248ef254d0a1488a72041cfb45ca9caada6d994
 Plug 'nvim-lualine/lualine.nvim'
 
-" commit: af0f583cd35286dd6f0e3ed52622728703237e50
+" commit: 175e74f87d3d2e4d20952d390af5f2a794f5ed7e
 Plug 'lewis6991/gitsigns.nvim'
-" commit: d38c1b5266850f77f75e006bcc26213684e1e141
+" commit: 3dc498c9777fe79156f3d32dddd483b8b3dbd95f
 Plug 'sindrets/diffview.nvim'
 
 " commit: f247ee700b569ed43f39320413a13ba9b0aef0db
@@ -45,16 +45,16 @@ Plug 'vinnymeller/swagger-preview.nvim', {'on': ['SwaggerPreview', 'SwaggerPrevi
 " commit: 776b509f80dd49d8205b9b0d94485568236d1192
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 
-" commit: 7320b7df62039c879c4f609bca946ea09b438a98
+" commit: 6b99399c41d9818ee4b4fa8968a1249100008e4c
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " commit: 1e054c1d075d87903647db9320116d360eb8b024
 Plug 'junegunn/fzf.vim'
 
 " commit: 7b9e1ef0a1399907c51d23b6080b94a5aba4a654
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" commit: c0da2013d1cef768c00f3f0b7f365fe19a10bca3
+" commit: 8f16c39f5b439bd9540336c4d5da705d180e34b9
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" commit: 50e237facda4b9c3761c3f3e9df185cfdf3d91e8
+" commit: 1ccd99e113324602b4eca41fd24ba6f991e8f05d
 Plug 'dense-analysis/ale'
 " commit: 8172d0ce83d730820d9497fd2e988046022d0b99
 Plug 'ranelpadon/python-copy-reference.vim'
