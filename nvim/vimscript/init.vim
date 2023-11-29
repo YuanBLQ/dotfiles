@@ -35,9 +35,6 @@ Plug 'lewis6991/gitsigns.nvim'
 " commit: d38c1b5266850f77f75e006bcc26213684e1e141
 Plug 'sindrets/diffview.nvim'
 
-" commit: 46eaf8918b347906789df296143117774e827616
-Plug 'tpope/vim-fugitive'
-
 " commit: f247ee700b569ed43f39320413a13ba9b0aef0db
 Plug 'folke/tokyonight.nvim'
 
