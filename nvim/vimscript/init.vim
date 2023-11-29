@@ -30,7 +30,7 @@ Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
 " commit: 2248ef254d0a1488a72041cfb45ca9caada6d994
 Plug 'nvim-lualine/lualine.nvim'
 
-" commit: 175e74f87d3d2e4d20952d390af5f2a794f5ed7e
+" commit: 6ef8c54fb526bf3a0bc4efb0b2fe8e6d9a7daed2
 Plug 'lewis6991/gitsigns.nvim'
 " commit: 3dc498c9777fe79156f3d32dddd483b8b3dbd95f
 Plug 'sindrets/diffview.nvim'
