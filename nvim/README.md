@@ -18,8 +18,9 @@
 1. Python: `CocInstall coc-pyright`
 2. Golang: `CocInstall coc-go`
 3. Json: `CocInstall coc-json`
-4. color: `CocInstall coc-highlight`
-5. spell-checker: `CocInstall coc-spell-checker`
+4. Sql: `CocInstall coc-sql`
+5. color: `CocInstall coc-highlight`
+6. spell-checker: `CocInstall coc-spell-checker`
 
 
 ### treesitter 插件
