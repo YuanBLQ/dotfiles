@@ -8,6 +8,9 @@
     "[json]": {
         "coc.preferences.formatOnSave": true
     },
+    "[sql]": {
+        "coc.preferences.formatOnSave": true
+    },
     "coc.preferences.useQuickfixForLocations": true,
     "coc.preferences.jumpCommand": "edit",
     "pyright.disableDiagnostics": false,
