@@ -23,6 +23,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.8'}
 " commit: 4a6737a8d70fe1ac55c64dfa47fcb189ca431872
 Plug 'folke/todo-comments.nvim'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " commit: 05f55c1fd6470b31627655c528245794e3cd4b2c
 Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
@@ -288,6 +289,17 @@ let g:qfenter_keymap.hopen = ['<c-x>']
 " list todo-comment of current file in quickfix
 " Ref: https://github.com/folke/todo-comments.nvim/issues/110
 nmap <a-d> :exe ":TodoQuickFix cwd=" .. fnameescape(expand("%"))<CR>
+
+" mg979/vim-visual-multi
+let g:VM_maps = {}
+" disable backspace mapping to solve the problem:
+"   https://github.com/mg979/vim-visual-multi/issues/172#issuecomment-1092293500
+let g:VM_maps["I BS"]               = ''
+let g:VM_maps["Exit"]               = '<C-c>'
+let g:VM_maps["Find Under"]         = '<C-n>'
+let g:VM_maps["Find Subword Under"] = '<C-n>'
+let g:VM_maps["Add Cursor Down"]    = '<C-j>'
+let g:VM_maps["Add Cursor Up"]      = '<C-k>'
 
 " custom defined command
 command! NT :NvimTreeToggle
