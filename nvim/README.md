@@ -29,8 +29,9 @@
 2. Golang: `TSInstall go`
 3. Proto: `TSInstall proto`
 4. Lua: `TSInstall lua`
-5. Markdow `TSInstall markdown`
-6. MarkdowInline `TSInstall markdown_inline`
+5. SQL: `TSInstall sql`
+6. Markdow `TSInstall markdown`
+7. MarkdowInline `TSInstall markdown_inline`
 
 
 ### ale 依赖配置
