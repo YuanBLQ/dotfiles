@@ -4,8 +4,6 @@ source ~/.config/nvim/base.vim
 
 " Plug
 call plug#begin('~/.config/nvim/plugs')
-" commit: 5efb8bd06841f91f97c90e16de85e96d57e9c862
-Plug 'nvim-tree/nvim-web-devicons'
 " commit: 366b0837486f60ae0e7550c15de8ff66d057c4cd
 Plug 'nvim-lua/plenary.nvim'
 
@@ -25,6 +23,8 @@ Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.8'}
 Plug 'folke/todo-comments.nvim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
+" commit: 5efb8bd06841f91f97c90e16de85e96d57e9c862
+Plug 'nvim-tree/nvim-web-devicons'
 " commit: 05f55c1fd6470b31627655c528245794e3cd4b2c
 Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
 
