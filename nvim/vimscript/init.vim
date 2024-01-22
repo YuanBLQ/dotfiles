@@ -43,9 +43,6 @@ Plug 'folke/tokyonight.nvim'
 " commit: 4e1db32e7934c57d653846d5d297f7ea9ddb6ee8
 Plug 'vinnymeller/swagger-preview.nvim', {'on': ['SwaggerPreview', 'SwaggerPreviewToggle']}
 
-" commit: 776b509f80dd49d8205b9b0d94485568236d1192
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
-
 " commit: 6b99399c41d9818ee4b4fa8968a1249100008e4c
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " commit: 1e054c1d075d87903647db9320116d360eb8b024
@@ -188,8 +185,6 @@ lua << EOF
         }
     })
 
-    require("telescope").setup({})
-
     require("Comment").setup({})
 
     require("swagger-preview").setup({
@@ -199,6 +194,10 @@ lua << EOF
         host = "localhost",
     })
 EOF
+
+
+" start window resize mode by `<Leader>+e`
+let g:winresizer_start_key = '<c-[>'
 
 
 " flash key map
