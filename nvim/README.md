@@ -22,6 +22,8 @@
 5. color: `CocInstall coc-highlight`
 6. spell-checker: `CocInstall coc-spell-checker`
 
+[cocUpdate 报错: `certificate has expired`](https://github.com/neoclide/coc.nvim/issues/1514#issuecomment-1272430040)
+
 
 ### treesitter 插件
 

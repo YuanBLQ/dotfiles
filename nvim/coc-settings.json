@@ -12,6 +12,7 @@
     },
     "coc.preferences.useQuickfixForLocations": true,
     "coc.preferences.jumpCommand": "edit",
+    "http.proxyStrictSSL": false,
     "pyright.disableDiagnostics": false,
     "pyright.enable": true,
     "python.formatting.provider": "none",
