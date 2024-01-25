@@ -1,0 +1,14 @@
+# Skin...
+k9s:
+  body:
+    bgColor: '#1b1f30'
+
+  views:
+    table:
+      bgColor: '#1b1f30'
+      header:
+        bgColor: '#1b1f30'
+    logs:
+      bgColor: '#1b1f30'
+      indicator:
+        bgColor: '#1b1f30'
