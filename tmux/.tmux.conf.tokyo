@@ -1,7 +1,15 @@
+# doc
+# -A: new-session 的时候如果指定的 session 名称已存在，直接 attach 到这个 session
+# -D: new-session 的时候如果指定的 session 已存在，其他已连接的客户端 detach 掉这个 session
+# -X: new-session 的时候如果指定的 session 已存在，其他已连接的客户端直接断开这个 session 的连接
+
 # Use Ctrl-a as prefix key.
 set -g prefix C-s
 unbind C-b  # unbind the default Ctrl-b.
 bind C-s send-prefix
+
+# reload tmux config with <PREFIX-KEY> + r
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
 
 # theme
 # -----------
@@ -40,7 +48,7 @@ set -g status-right-length 150
 set -g status-left-style NONE
 set -g status-left '#{tmux_mode_indicator}#{prefix_highlight}'
 set -g status-right '#{b:pane_current_path} | %Y-%m-%d %H:%M'
-set -g window-status-format "#[fg=#1d202f,bg=#7aa2f7] #I #W "  # index Workspace
+set -g window-status-format "#[fg=#1d202f,bg=#2e3c64] #I #W "  # index Workspace
 set -g window-status-current-format "#[fg=colour255,bg=#7aa2f7] #I #W "
 
 
@@ -54,6 +62,10 @@ set -g status-keys vi
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 # Copy to system clipboard
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'pbcopy'
+# key bindings
+# Ref: https://gist.github.com/MohamedAlaa/2961058#copy-mode
+bind-key -T copy-mode-vi H send-keys -X start-of-line
+bind-key -T copy-mode-vi L send-keys -X end-of-line
 
 # Navigate panes using jkhl (no prefix)
 bind-key j select-pane -D
