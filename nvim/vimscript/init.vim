@@ -245,6 +245,7 @@ au FileType go,python,c,javascript nmap <silent> gd :call CocAction('jumpDefinit
 au FileType go,python,c,javascript nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
 au FileType go,python,c,javascript nmap <silent> gl :call CocAction('jumpDefinition')<CR>
 au FileType go,python,c,javascript nmap <silent> rf <Plug>(coc-refactor)
+au FileType go,python,c,javascript nmap <silent> rn <Plug>(coc-rename)
 au FileType go,python,c,javascript nmap <silent> gr <Plug>(coc-references)
 au FileType go,python,c,javascript nmap <silent> gi <Plug>(coc-implementation)
 au FileType go,python,c,javascript nmap <silent> gt <Plug>(coc-type-definition)
