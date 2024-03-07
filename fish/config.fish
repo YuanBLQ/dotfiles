@@ -95,16 +95,16 @@ function dotenv --description 'Load environment variables from .env file'
             set -xg (echo $line | cut -d = -f 1) (echo $line | cut -d = -f 2-)
         end
 
-        # Rewrite _pure_prompt function
-        if not functions -q _old_pure_prompt
-            functions -c _pure_prompt _old_pure_prompt
-        end
+        # # Rewrite _pure_prompt function
+        # if not functions -q _old_pure_prompt
+        #     functions -c _pure_prompt _old_pure_prompt
+        # end
 
-        # Insert dotenv prefix to prompt
-        function _pure_prompt  --inherit-variable envfile --argument-names exit_code
-            echo -n -s (set_color green) "(" $envfile ")" (set_color normal) " "
-            _old_pure_prompt $exit_code
-        end
+        # # Insert dotenv prefix to prompt
+        # function _pure_prompt  --inherit-variable envfile --argument-names exit_code
+        #     echo -n -s (set_color green) "(" $envfile ")" (set_color normal) " "
+        #     _old_pure_prompt $exit_code
+        # end
     end
 end
 
@@ -129,3 +129,6 @@ end
 alias sed gsed
 alias ll="ls -al"
 alias pocr="pngpaste - | tesseract stdin stdout"
+
+# direnv
+# direnv hook fish | source
