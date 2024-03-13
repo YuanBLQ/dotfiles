@@ -35,6 +35,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 " commit: 3dc498c9777fe79156f3d32dddd483b8b3dbd95f
 Plug 'sindrets/diffview.nvim'
+Plug 'FabijanZulj/blame.nvim'
 
 " commit: f247ee700b569ed43f39320413a13ba9b0aef0db
 Plug 'folke/tokyonight.nvim'
@@ -129,6 +130,10 @@ lua << EOF
             delay = 300,
             ignore_whitespace = true,
         }
+    })
+
+    require('blame').setup({
+        width = 47,
     })
 
     require("nvim-autopairs").setup {}
@@ -228,8 +233,8 @@ let g:ale_python_isort_options = '--profile black --ca'
 
 " coc config
 " Highlight the symbol and its references when holding the cursor
-hi CocHighlightText cterm=underline gui=underline guisp=#ebdbb2
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" hi CocHighlightText cterm=underline gui=underline guisp=#ebdbb2
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
