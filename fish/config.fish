@@ -108,6 +108,31 @@ function dotenv --description 'Load environment variables from .env file'
     end
 end
 
+# set proxy quickly
+function sb
+    if [ (count $argv) -gt 0 ]
+        if [ $argv[1] = "-g" ]
+            # set environment variables for shell globally
+            set -xU https_proxy http://127.0.0.1:7890
+            set -xU http_proxy http://127.0.0.1:7890
+            set -xU all_proxy socks5://127.0.0.1:7890
+            return 0
+        end
+        if [ $argv[1] = "-r" ]
+            # remove environment variables
+            set -e https_proxy
+            set -e http_proxy
+            set -e all_proxy
+            return 0
+        end
+    end
+
+    # set environment variables for current shell
+    set -xg https_proxy http://127.0.0.1:7890
+    set -xg http_proxy http://127.0.0.1:7890
+    set -xg all_proxy socks5://127.0.0.1:7890
+end
+
 
 # Rewrite function fish_user_key_bindings
 if functions -q fish_user_key_bindings
