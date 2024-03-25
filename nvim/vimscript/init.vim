@@ -202,7 +202,7 @@ EOF
 
 
 " start window resize mode by `<Leader>+e`
-let g:winresizer_start_key = '<c-[>'
+let g:winresizer_start_key = '<a-o>'
 
 
 " flash key map
