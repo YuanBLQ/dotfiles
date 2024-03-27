@@ -1,11 +1,17 @@
 format = """
-${custom.proxy}$all
+${custom.proxy}${custom.pyenv}$all
 """
 
 [custom.proxy]
 when = "test ! -z $http_proxy"
 symbol = "📡 "
 format = "$symbol"
+
+[custom.pyenv]
+when = "which pip"
+symbol = "🔗 "
+style = "bold orange"
+format = "[$symbol]($style)"
 
 [time]
 disabled = false
