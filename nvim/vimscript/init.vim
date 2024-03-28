@@ -202,7 +202,7 @@ EOF
 
 
 " start window resize mode by `<Leader>+e`
-let g:winresizer_start_key = '<a-o>'
+let g:winresizer_start_key = '<a-w>'
 
 
 " flash key map
@@ -282,7 +282,7 @@ let $FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-rang
 
 nmap <a-p> :Files<CR>
 nmap <a-f> :Rg<CR>
-nmap <a-w> :Windows<CR>
+" nmap <a-w> :Windows<CR>
 
 
 " QFEnter
@@ -314,4 +314,4 @@ command! NF :NvimTreeFindFile | :NvimTreeResize 30
 
 command! DC :call copilot#Dismiss()
 
-command! -range AD <line1>,<line2> :CocCommand cSpell.addWordToDictionary
+" command! -range AD <line1>,<line2> :CocCommand cSpell.addWordToDictionary
