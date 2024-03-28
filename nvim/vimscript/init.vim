@@ -248,6 +248,7 @@ nnoremap <silent><nowait> <space>j <Plug>(coc-diagnostic-next)
 
 au FileType go,python,c,javascript nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
 au FileType go,python,c,javascript nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
+au FileType go,python,c,javascript nmap <silent> gT :call CocAction('jumpDefinition', 'tabnew')<CR>
 au FileType go,python,c,javascript nmap <silent> gl :call CocAction('jumpDefinition')<CR>
 au FileType go,python,c,javascript nmap <silent> rf <Plug>(coc-refactor)
 au FileType go,python,c,javascript nmap <silent> rn <Plug>(coc-rename)
