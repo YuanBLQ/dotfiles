@@ -25,7 +25,6 @@ starship init fish | source
 # Basic
 set -x SHELL fish
 set -x TERM screen-256color
-set -x EDITOR vim
 set -x LANG en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
 set -x EDITOR nvim
