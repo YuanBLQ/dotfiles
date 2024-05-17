@@ -4,14 +4,14 @@ source ~/.config/nvim/base.vim
 
 " Plug
 call plug#begin('~/.config/nvim/plugs')
-" commit: 366b0837486f60ae0e7550c15de8ff66d057c4cd
+" commit: 663246936325062427597964d81d30eaa42ab1e4
 Plug 'nvim-lua/plenary.nvim'
 
 " commit: 9bd559a03ccec98a458e60c705547119eb5350f3
 Plug 'simeji/winresizer' " <c-e> + hhh jjj kkk lll for resize window
 " commit: 426c04312ae67ac28dce38ccc5fafdd1ed4a3d9f
 Plug 'yssl/QFEnter'
-" commit: 0f04d78619cce9a5af4f355968040f7d675854a1
+" commit: eac31b4797ce4fa9dd546f7b98ec32305527b19e
 Plug 'windwp/nvim-autopairs'
 " commit: 48817af25f51c0590653bbc290866e4890fe1cbe
 Plug 'folke/flash.nvim'
@@ -19,41 +19,43 @@ Plug 'folke/flash.nvim'
 Plug 'numToStr/Comment.nvim'
 " commit: 9637670896b68805430e2f72cf5d16be5b97a22a
 Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.8'}
-" commit: 4a6737a8d70fe1ac55c64dfa47fcb189ca431872
+" commit: 833d8dd8b07eeda37a09e99460f72a02616935cb
 Plug 'folke/todo-comments.nvim'
+" commit: aec289a9fdabaa0ee6087d044d75b32e12084344
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-" commit: 5efb8bd06841f91f97c90e16de85e96d57e9c862
+" commit: 140edfcf25093e8b321d13e154cbce89ee868ca0
 Plug 'nvim-tree/nvim-web-devicons'
-" commit: 05f55c1fd6470b31627655c528245794e3cd4b2c
+" commit: 7bdb220d0fe604a77361e92cdbc7af1b8a412126
 Plug 'nvim-tree/nvim-tree.lua', {'on': ['NvimTreeToggle', 'NvimTreeFindFile']}
 
-" commit: 2248ef254d0a1488a72041cfb45ca9caada6d994
+" commit: 566b7036f717f3d676362742630518a47f132fff
 Plug 'nvim-lualine/lualine.nvim'
 
-" commit: 6ef8c54fb526bf3a0bc4efb0b2fe8e6d9a7daed2
+" commit: c5ff7628e19a47ec14d3657294cc074ecae27b99
 Plug 'lewis6991/gitsigns.nvim'
 " commit: 3dc498c9777fe79156f3d32dddd483b8b3dbd95f
 Plug 'sindrets/diffview.nvim'
+" commit: 562661972085a273914c8f702b11924f8aa573ea
 Plug 'FabijanZulj/blame.nvim'
 
-" commit: f247ee700b569ed43f39320413a13ba9b0aef0db
+" commit: 67c6050e1ca41260c919236a098ba278472c7520
 Plug 'folke/tokyonight.nvim'
 
 " 'do': 'sudo npm install -g swagger-ui-watcher'
 " commit: 4e1db32e7934c57d653846d5d297f7ea9ddb6ee8
 Plug 'vinnymeller/swagger-preview.nvim', {'on': ['SwaggerPreview', 'SwaggerPreviewToggle']}
 
-" commit: 6b99399c41d9818ee4b4fa8968a1249100008e4c
+" commit: 09b0958b5f2b4ab0337f0c5125edba505462d162
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" commit: 1e054c1d075d87903647db9320116d360eb8b024
+" commit: f6cb5b17897ff0c38f60fecd4b529678bcfec259
 Plug 'junegunn/fzf.vim'
 
 " commit: 7b9e1ef0a1399907c51d23b6080b94a5aba4a654
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" commit: 8f16c39f5b439bd9540336c4d5da705d180e34b9
+" commit: 97997c928bb038457f49343ffa5304d931545584
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" commit: 1ccd99e113324602b4eca41fd24ba6f991e8f05d
+" commit: 8922478a83cd06bfe5b82eb45279649adc4ec046
 Plug 'dense-analysis/ale'
 " commit: 8172d0ce83d730820d9497fd2e988046022d0b99
 Plug 'ranelpadon/python-copy-reference.vim'
