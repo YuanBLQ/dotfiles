@@ -18,6 +18,12 @@
 - fisher install PatrickF1/fzf.fish
 
 
+## 相关系统插件安装
+- fd: `brew install fd`
+- bat: `brew install bat`
+- fzf: `brew install fzf`
+
+
 ## 加载自定义环境变量
 
 两种方式：
