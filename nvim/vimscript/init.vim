@@ -23,6 +23,8 @@ Plug 'lukas-reineke/indent-blankline.nvim', {'tag': 'v2.20.8'}
 Plug 'folke/todo-comments.nvim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
+Plug 'yuttie/comfortable-motion.vim'
+
 " commit: 5efb8bd06841f91f97c90e16de85e96d57e9c862
 Plug 'nvim-tree/nvim-web-devicons'
 " commit: 05f55c1fd6470b31627655c528245794e3cd4b2c
@@ -201,8 +203,12 @@ lua << EOF
 EOF
 
 
+let g:comfortable_motion_friction = 180.0
+let g:comfortable_motion_air_drag = 1.0
+
 " start window resize mode by `<Leader>+e`
 let g:winresizer_start_key = '<a-w>'
+let g:winresizer_vert_resize = 2
 
 
 " flash key map
