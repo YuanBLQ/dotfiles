@@ -59,6 +59,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
+Plug 'j-hui/fidget.nvim'
 
 " commit: 7b9e1ef0a1399907c51d23b6080b94a5aba4a654
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -211,6 +212,16 @@ lua << EOF
     })
 
     ------------------ cmp & lsp ------------------
+    require("fidget").setup {
+        notification = {
+            override_vim_notify = true,
+            filter = vim.log.levels.DEBUG,
+        },
+        logger = {
+            level = vim.log.levels.DEBUG,
+        }
+    }
+
     local cmp = require 'cmp'
     cmp.setup({
         mapping = cmp.mapping.preset.insert({
@@ -313,6 +324,7 @@ lua << EOF
     vim.diagnostic.config({
         virtual_text = false,
     })
+    -----------------------------------------------
 EOF
 
 
