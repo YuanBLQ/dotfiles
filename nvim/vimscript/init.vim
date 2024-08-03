@@ -321,7 +321,7 @@ let g:comfortable_motion_air_drag = 1.0
 
 " start window resize mode by `<Leader>+e`
 let g:winresizer_start_key = '<a-w>'
-let g:winresizer_vert_resize = 2
+let g:winresizer_vert_resize = 3
 
 
 " flash key map
@@ -346,6 +346,7 @@ let g:ale_fixers = {
   \  'python': [ 'black', 'isort' ],
   \  'go': [ 'gofmt' ],
   \  'proto': [ 'clang-format' ],
+  \  'json': [ 'clang-format' ],
 \}
 let g:ale_python_isort_options = '--profile black --ca'
 
