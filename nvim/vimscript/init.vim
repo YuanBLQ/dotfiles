@@ -53,8 +53,15 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " commit: f6cb5b17897ff0c38f60fecd4b529678bcfec259
 Plug 'junegunn/fzf.vim'
 
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+
 " commit: 7b9e1ef0a1399907c51d23b6080b94a5aba4a654
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " commit: 97997c928bb038457f49343ffa5304d931545584
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " commit: 8922478a83cd06bfe5b82eb45279649adc4ec046
@@ -178,21 +185,21 @@ lua << EOF
         }
     }
 
-    require("flash").setup({
-        mode = "exact",
-        continue = true,
-        search = {
-            incremental = true,
-        },
-        modes = {
-            char = {
-                enabled = true,
-                autohide = true,
-                jump_labels = true,
-                keys = { "f", "F" },
-            }
-        }
-    })
+    -- require("flash").setup({
+    --     mode = "exact",
+    --     continue = true,
+    --     search = {
+    --         incremental = true,
+    --     },
+    --     modes = {
+    --         char = {
+    --             enabled = true,
+    --             autohide = true,
+    --             jump_labels = true,
+    --             keys = { "f", "F" },
+    --         }
+    --     }
+    -- })
 
     require("Comment").setup({})
 
@@ -201,6 +208,110 @@ lua << EOF
         port = 8730,
         -- The host to run the preview server on
         host = "localhost",
+    })
+
+    ------------------ cmp & lsp ------------------
+    local cmp = require 'cmp'
+    cmp.setup({
+        mapping = cmp.mapping.preset.insert({
+            ['<C-e>'] = cmp.mapping.abort(),
+            ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        }),
+        sources = cmp.config.sources({
+            { name = 'nvim_lsp' },
+            { name = 'path' },
+        }, {
+            { name = 'buffer' },
+        })
+    })
+    -- -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+    -- cmp.setup.cmdline({ '/', '?' }, {
+    --     mapping = cmp.mapping.preset.cmdline(),
+    --     sources = {
+    --         { name = 'buffer' }
+    --     }
+    -- })
+    -- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    -- cmp.setup.cmdline(':', {
+    --     mapping = cmp.mapping.preset.cmdline(),
+    --     sources = cmp.config.sources({
+    --         { name = 'path' }
+    --         }, {
+    --         { name = 'cmdline' }
+    --     }),
+    --     matching = { disallow_symbol_nonprefix_matching = false }
+    -- })
+
+    local capablities = require('cmp_nvim_lsp').default_capabilities()
+    local on_lsp_attach = function(_, bufnr)
+        local function buf_set_option(...)
+            vim.api.nvim_buf_set_option(bufnr, ...)
+        end
+
+        buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+        -- Mappings.
+        local opts = { buffer = bufnr, noremap = true, silent = true }
+        vim.keymap.set(
+            'n', 'gD',
+            function()
+                vim.cmd('split')
+                vim.lsp.buf.declaration()
+            end, opts
+        )
+        vim.keymap.set(
+            'n', 'gd',
+            function()
+                vim.cmd('split')
+                vim.lsp.buf.definition()
+            end, opts
+        )
+        vim.keymap.set(
+            'n', 'gv',
+            function()
+                vim.cmd('vsplit')
+                vim.lsp.buf.definition()
+            end, opts
+        )
+        vim.keymap.set(
+            'n', 'gT',
+            function()
+                vim.cmd('tabnew')
+                vim.lsp.buf.definition()
+            end, opts
+        )
+        vim.keymap.set('n', 'gl', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('i', '<a-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+        vim.keymap.set('n', '<space>wl', function()
+            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, opts)
+        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+        vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+        vim.keymap.set('n', '<space>k', vim.diagnostic.goto_prev, opts)
+        vim.keymap.set('n', '<space>j', vim.diagnostic.goto_next, opts)
+        vim.keymap.set('n', '<space>a', vim.diagnostic.setloclist, opts)
+    end
+
+    -- Python
+    require'lspconfig'.pyright.setup{
+        cmd = { 'pyright-langserver', '--stdio' },
+        on_attach = on_lsp_attach,
+        capabilities = capabilities,
+    }
+    -- Golang
+    require('lspconfig').gopls.setup({
+        on_attach = on_lsp_attach,
+        capabilities = capabilities,
+    })
+
+    vim.diagnostic.config({
+        virtual_text = false,
     })
 EOF
 
@@ -246,32 +357,32 @@ let g:ale_python_isort_options = '--profile black --ca'
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-inoremap <silent><expr> <a-cr> coc#refresh()
-nnoremap <silent><nowait> <space>a :CocDiagnostics<cr>
-nnoremap <silent><nowait> <space>k <Plug>(coc-diagnostic-prev)
-nnoremap <silent><nowait> <space>j <Plug>(coc-diagnostic-next)
-
-au FileType go,python,c,javascript nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
-au FileType go,python,c,javascript nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
-au FileType go,python,c,javascript nmap <silent> gT :call CocAction('jumpDefinition', 'tabnew')<CR>
-au FileType go,python,c,javascript nmap <silent> gl :call CocAction('jumpDefinition')<CR>
-au FileType go,python,c,javascript nmap <silent> rf <Plug>(coc-refactor)
-au FileType go,python,c,javascript nmap <silent> rn <Plug>(coc-rename)
-au FileType go,python,c,javascript nmap <silent> gr <Plug>(coc-references)
-au FileType go,python,c,javascript nmap <silent> gi <Plug>(coc-implementation)
-au FileType go,python,c,javascript nmap <silent> gt <Plug>(coc-type-definition)
-au FileType go,python,c,javascript inoremap <silent> <A-k> <C-r>=CocActionAsync('showSignatureHelp')<CR>
-au FileType go,python,c,javascript nmap <silent>  K :call ShowDocumentation()<CR>
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"
+" inoremap <silent><expr> <a-cr> coc#refresh()
+" nnoremap <silent><nowait> <space>a :CocDiagnostics<cr>
+" nnoremap <silent><nowait> <space>k <Plug>(coc-diagnostic-prev)
+" nnoremap <silent><nowait> <space>j <Plug>(coc-diagnostic-next)
+"
+" au FileType go,python,c,javascript nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
+" au FileType go,python,c,javascript nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
+" au FileType go,python,c,javascript nmap <silent> gT :call CocAction('jumpDefinition', 'tabnew')<CR>
+" au FileType go,python,c,javascript nmap <silent> gl :call CocAction('jumpDefinition')<CR>
+" au FileType go,python,c,javascript nmap <silent> rf <Plug>(coc-refactor)
+" au FileType go,python,c,javascript nmap <silent> rn <Plug>(coc-rename)
+" au FileType go,python,c,javascript nmap <silent> gr <Plug>(coc-references)
+" au FileType go,python,c,javascript nmap <silent> gi <Plug>(coc-implementation)
+" au FileType go,python,c,javascript nmap <silent> gt <Plug>(coc-type-definition)
+" au FileType go,python,c,javascript inoremap <silent> <A-k> <C-r>=CocActionAsync('showSignatureHelp')<CR>
+" au FileType go,python,c,javascript nmap <silent>  K :call ShowDocumentation()<CR>
+" function! ShowDocumentation()
+"   if CocAction('hasProvider', 'hover')
+"     call CocActionAsync('doHover')
+"   else
+"     call feedkeys('K', 'in')
+"   endif
+" endfunction
 
 
 " copy python reference
