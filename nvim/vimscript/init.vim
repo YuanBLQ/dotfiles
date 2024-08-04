@@ -60,6 +60,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'j-hui/fidget.nvim'
+Plug 'stevearc/aerial.nvim'
 
 " commit: 7b9e1ef0a1399907c51d23b6080b94a5aba4a654
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -324,6 +325,12 @@ lua << EOF
     vim.diagnostic.config({
         virtual_text = false,
     })
+
+    require("aerial").setup({
+      -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+      on_attach = function(bufnr)
+      end,
+    })
     -----------------------------------------------
 EOF
 
@@ -334,6 +341,22 @@ let g:comfortable_motion_air_drag = 1.0
 " start window resize mode by `<Leader>+e`
 let g:winresizer_start_key = '<a-w>'
 let g:winresizer_vert_resize = 3
+
+
+" zerial outline
+function! AerialNoPreviewFzf()
+  let saved_fzf_opts = $FZF_DEFAULT_OPTS
+  let $FZF_DEFAULT_OPTS = '--no-preview'
+
+  let saved_fzf_layout = g:fzf_layout
+  let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.6 } }
+
+  call aerial#fzf()
+
+  let $FZF_DEFAULT_OPTS = saved_fzf_opts
+  let g:fzf_layout = saved_fzf_layout
+endfunction
+nmap <silent> <a-o> <cmd>call AerialNoPreviewFzf()<cr>
 
 
 " flash key map
