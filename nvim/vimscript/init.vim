@@ -349,7 +349,7 @@ function! AerialNoPreviewFzf()
   let $FZF_DEFAULT_OPTS = '--no-preview'
 
   let saved_fzf_layout = g:fzf_layout
-  let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.6 } }
+  let g:fzf_layout = { 'window': { 'width': 0.3, 'height': 0.6 } }
 
   call aerial#fzf()
 
