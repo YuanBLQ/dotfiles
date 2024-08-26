@@ -18,6 +18,24 @@
 # end
 
 
+# $PATH environment variable
+set -e fish_user_paths
+set -x GOPATH $HOME/go
+set -x PYENV_ROOT $HOME/.pyenv
+set -gx fish_user_paths \
+    # $HOME/.pyenv/shims \
+    /opt/homebrew/bin \
+    $GOPATH/bin \
+    $PYENV_ROOT/bin \
+    /usr/local/sbin \
+    /usr/local/bin \
+    /usr/sbin \
+    /usr/bin \
+    /sbin \
+    /bin \
+    $fish_user_paths
+
+
 # starship
 starship init fish | source
 
@@ -32,25 +50,11 @@ set -x SED gsed
 
 
 # Go
-set -x GOPATH $HOME/go
 set -x GO111MODULE on
 
-
-# $PATH environment variable
-set -e fish_user_paths
-set -x PYENV_ROOT $HOME/.pyenv
-set -gx fish_user_paths \
-    # $HOME/.pyenv/shims \
-    $GOPATH/bin \
-    $PYENV_ROOT/bin \
-    /usr/local/sbin \
-    /usr/local/bin \
-    /usr/sbin \
-    /usr/bin \
-    /sbin \
-    /bin \
-    $fish_user_paths
-
+# bat
+# https://github.com/sharkdp/bat?tab=readme-ov-file#highlighting-theme
+set -x BAT_THEME Coldark-Dark
 
 # Config files directory.
 set -x XDG_CONFIG_HOME $HOME/.config
