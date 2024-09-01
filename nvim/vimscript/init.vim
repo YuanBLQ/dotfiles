@@ -70,6 +70,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'dense-analysis/ale'
 " commit: 8172d0ce83d730820d9497fd2e988046022d0b99
 Plug 'ranelpadon/python-copy-reference.vim'
+
+Plug 'luozhiya/fittencode.nvim'
 call plug#end()
 
 
@@ -333,6 +335,15 @@ lua << EOF
       end,
     })
     -----------------------------------------------
+    require('fittencode').setup({
+        completion = 'source'
+    })
+    -- vim.api.nvim_create_user_command('DC',
+    --     function()
+    --         require('fittencode').dismiss_suggestions()
+    --     end, {}
+    -- )
+
 EOF
 
 
@@ -473,6 +484,8 @@ command! NT :NvimTreeToggle
 command! NR :NvimTreeResize 30
 command! NF :NvimTreeFindFile | :NvimTreeResize 30
 
-command! DC :call copilot#Dismiss()
+" command! DC :call copilot#Dismiss()
+
+command! DC lua require('fittencode').dismiss_suggestions()
 
 " command! -range AD <line1>,<line2> :CocCommand cSpell.addWordToDictionary
