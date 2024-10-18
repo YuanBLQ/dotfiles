@@ -342,9 +342,10 @@ lua << EOF
       end,
     })
     -----------------------------------------------
-    require('fittencode').setup({
-        completion = 'source'
-    })
+    -- require('fittencode').setup({
+    --     completion = 'source'
+    -- })
+
     -- vim.api.nvim_create_user_command('DC',
     --     function()
     --         require('fittencode').dismiss_suggestions()
