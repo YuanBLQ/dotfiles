@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/chy/.gitignore_global
+    excludesfile = /Users/chy/.gitignore_global
     editor = nvim
     pager = delta
 [interactive]

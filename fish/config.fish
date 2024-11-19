@@ -25,6 +25,7 @@ set -x PYENV_ROOT $HOME/.pyenv
 set -gx fish_user_paths \
     # $HOME/.pyenv/shims \
     /opt/homebrew/bin \
+    /opt/homebrew/opt \
     $GOPATH/bin \
     $PYENV_ROOT/bin \
     /usr/local/sbin \
