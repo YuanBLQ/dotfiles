@@ -75,8 +75,10 @@ Plug 'dense-analysis/ale'
 " commit: 8172d0ce83d730820d9497fd2e988046022d0b99
 Plug 'ranelpadon/python-copy-reference.vim'
 
-Plug 'luozhiya/fittencode.nvim'
+" Plug 'luozhiya/fittencode.nvim'
 Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+
+Plug 'sphamba/smear-cursor.nvim'
 call plug#end()
 
 
@@ -475,6 +477,7 @@ lua << EOF
         },
     })
 
+    require('smear_cursor').enabled = true
 EOF
 
 
