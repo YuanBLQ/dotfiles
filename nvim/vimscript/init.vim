@@ -78,7 +78,7 @@ Plug 'ranelpadon/python-copy-reference.vim'
 " Plug 'luozhiya/fittencode.nvim'
 Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
 
-Plug 'sphamba/smear-cursor.nvim'
+" Plug 'sphamba/smear-cursor.nvim'
 call plug#end()
 
 
@@ -477,7 +477,7 @@ lua << EOF
         },
     })
 
-    require('smear_cursor').enabled = true
+    -- require('smear_cursor').enabled = true
 EOF
 
 
