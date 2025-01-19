@@ -77,8 +77,6 @@ Plug 'ranelpadon/python-copy-reference.vim'
 
 " Plug 'luozhiya/fittencode.nvim'
 Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
-
-Plug 'sphamba/smear-cursor.nvim'
 call plug#end()
 
 
@@ -338,6 +336,12 @@ lua << EOF
         on_attach = on_lsp_attach,
         capabilities = capabilities,
     })
+    -- TypeScript
+    require('lspconfig').ts_ls.setup{
+        cmd = { 'typescript-language-server', '--stdio' },
+        on_attach = on_lsp_attach,
+        capabilities = capabilities,
+    }
 
     vim.diagnostic.config({
         virtual_text = false,
@@ -476,8 +480,6 @@ lua << EOF
             override_timeoutlen = 500,
         },
     })
-
-    require('smear_cursor').enabled = true
 EOF
 
 

@@ -39,6 +39,17 @@
 5. SQL: `TSInstall sql`
 6. Markdow `TSInstall markdown`
 7. MarkdowInline `TSInstall markdown_inline`
+8. html: `TSInstall html`
+9. html: `TSInstall css`
+10. tsx: `TSInstall tsx`
+
+
+### lspconfig
+
+- Python: `pip install pyright`
+- TypeScript: [`npm install -g typescript-language-server typescript`](https://github.com/typescript-language-server/typescript-language-server)
+- Golang: [`go install golang.org/x/tools/gopls@latest`](https://github.com/golang/tools/tree/master/gopls)
+
 
 
 ### ale 依赖配置
