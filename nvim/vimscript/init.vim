@@ -356,7 +356,7 @@ lua << EOF
     -- require('fittencode').setup({
     --     completion = 'source'
     -- })
-
+    --
     -- vim.api.nvim_create_user_command('DC',
     --     function()
     --         require('fittencode').dismiss_suggestions()
@@ -620,8 +620,8 @@ command! NT :NvimTreeToggle
 command! NR :NvimTreeResize 30
 command! NF :NvimTreeFindFile | :NvimTreeResize 30
 
-" command! DC :call copilot#Dismiss()
+command! DC :call copilot#Dismiss()
 
-command! DC lua require('fittencode').dismiss_suggestions()
+" command! DC lua require('fittencode').dismiss_suggestions()
 
 " command! -range AD <line1>,<line2> :CocCommand cSpell.addWordToDictionary
