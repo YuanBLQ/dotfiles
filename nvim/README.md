@@ -56,6 +56,27 @@
 
 1. protobuf lint & format: `brew install bufbuild/buf/buf`
 2. clang-format: `brew install clang-format`
+3. prettier:
+    > ```
+    > npm install --save-dev --save-exact prettier
+    > ```
+    >
+    > Then, create an empty config file to let editors and other tools know you are using Prettier:
+    > ```
+    > touch .prettierrc
+    > ```
+    >
+    > Next, create a `.prettierignore` file to let the Prettier CLI and editors know which files to not format. Here’s an example:
+    > ```
+    > echo "# Ignore artifacts:
+    > build
+    > coverage" > .prettierignore
+    > ```
+    >
+    > Now, format all files with Prettier:
+    > ```
+    > npx prettier . --write
+    > ```
 
 
 ### copilot

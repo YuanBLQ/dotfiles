@@ -534,8 +534,14 @@ let g:ale_fixers = {
   \  'proto': [ 'clang-format' ],
   \  'json': [ 'clang-format' ],
   \  'sql': [ 'pgformatter' ],
+  \  'css': [ 'prettier' ],
+  \  'javascript': ['prettier'],
+  \  'javascriptreact': ['prettier'],
+  \  'typescript': [ 'prettier' ],
+  \  'typescriptreact': [ 'prettier' ],
 \}
 let g:ale_python_isort_options = '--profile black --ca'
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
 
 
 " coc config
