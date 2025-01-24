@@ -24,6 +24,7 @@ set -x GOPATH $HOME/go
 set -x PYENV_ROOT $HOME/.pyenv
 set -gx fish_user_paths \
     # $HOME/.pyenv/shims \
+    /opt/homebrew/opt/node@22/bin \
     /opt/homebrew/bin \
     /opt/homebrew/opt \
     $GOPATH/bin \
