@@ -542,7 +542,7 @@ let g:ale_fixers = {
   \  'typescriptreact': [ 'prettier' ],
 \}
 let g:ale_python_isort_options = '--profile black --ca'
-let g:ale_javascript_prettier_options = '--trailing-comma all'
+let g:ale_javascript_prettier_options = ''
 
 
 " coc config
