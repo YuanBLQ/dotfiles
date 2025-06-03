@@ -6,7 +6,7 @@ let g:python3_host_prog = '~/.pyenv/shims/python'
 " Basic
 syntax on
 
-set mouse=a
+set mouse=
 set nowrap
 set ignorecase
 
