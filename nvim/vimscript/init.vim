@@ -387,11 +387,17 @@ lua << EOF
         ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
         provider = "openai", -- Recommend using Claude
         auto_suggestions_provider = "openai", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
-        openai = {
-            endpoint = "https://api.deepseek.com",
-            model = "deepseek-coder",
-            temperature = 0,
-            max_tokens = 4096,
+        providers = {
+            openai = {
+                endpoint = "https://api.deepseek.com",
+                model = "deepseek-coder", -- your desired model (or use gpt-4o, etc.)
+                extra_request_body = {
+                    timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+                    temperature = 0.75,
+                    max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+                    --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+                },
+            },
         },
         ---Specify the special dual_boost mode
         ---1. enabled: Whether to enable dual_boost mode. Default to false.
