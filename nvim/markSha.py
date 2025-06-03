@@ -41,7 +41,7 @@ def refresh_commit_record():
             new_lines.append(f"{COMMIT_LINE_PREFIX}{commit}")
             print(f"{commit} => {plug_name}")
 
-        # 如果之前有 commit 行数据，跳过
+        # 如果之前有 commit 行数据，跳过，不要他，因为上面拿到新的了
         if line.startswith(COMMIT_LINE_PREFIX):
             continue
 
