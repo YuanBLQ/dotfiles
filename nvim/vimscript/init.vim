@@ -83,7 +83,7 @@ Plug 'stevearc/aerial.nvim'
 " commit: 845356a256ed6ff5868da582cb62a31d762e1804
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " commit: 995d78435ac9a49e04a703ca5b2f60bfde31a84a
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'stevearc/conform.nvim'
 " commit: 8172d0ce83d730820d9497fd2e988046022d0b99
 Plug 'ranelpadon/python-copy-reference.vim'
@@ -564,21 +564,21 @@ nnoremap <a-j> <cmd>lua require('flash').jump()<cr>
 nnoremap <a-J> <cmd>lua require('flash').jump({search = { forward = false }})<cr>
 
 
-" Only run linters named in ale_linters settings.
-let g:ale_disable_lsp = 1
-let g:ale_use_neovim_diagnostics_api = 1
-
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-  \  'proto': [ 'buf-lint' ],
-  \  'go': ['gopls'],
-\}
-"  \  'python': ['ruff', 'mypy'],
-"let g:ale_python_mypy_show_notes = 1
-
-"""""" install plugs """"""
-" https://github.com/dense-analysis/ale/blob/master/doc/ale-sql.txt
-" brew install pgformatter
+" " Only run linters named in ale_linters settings.
+" let g:ale_disable_lsp = 1
+" let g:ale_use_neovim_diagnostics_api = 1
+"
+" let g:ale_linters_explicit = 1
+" let g:ale_linters = {
+"   \  'proto': [ 'buf-lint' ],
+"   \  'go': ['gopls'],
+" \}
+" "  \  'python': ['ruff', 'mypy'],
+" "let g:ale_python_mypy_show_notes = 1
+"
+" """""" install plugs """"""
+" " https://github.com/dense-analysis/ale/blob/master/doc/ale-sql.txt
+" " brew install pgformatter
 " let g:ale_fix_on_save = 1
 " let g:ale_fixers = {
 "   \  'python': [ 'black', 'isort' ],
