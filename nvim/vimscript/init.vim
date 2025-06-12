@@ -84,6 +84,7 @@ Plug 'stevearc/aerial.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " commit: 995d78435ac9a49e04a703ca5b2f60bfde31a84a
 Plug 'dense-analysis/ale'
+Plug 'stevearc/conform.nvim'
 " commit: 8172d0ce83d730820d9497fd2e988046022d0b99
 Plug 'ranelpadon/python-copy-reference.vim'
 
@@ -366,6 +367,37 @@ lua << EOF
       on_attach = function(bufnr)
       end,
     })
+
+    require("conform").setup({
+        formatters_by_ft = {
+            -- Conform will run multiple formatters sequentially
+            python = { "black", "isort" },
+            go = { "gofmt" },
+            proto = { "clang-format" },
+            json = { "clang-format" },
+            sql = { "pg_format" },
+            css = { "prettier" },
+            javascript = { "prettier" },
+            javascriptreact = { "prettier" },
+            typescript = { "prettier" },
+            typescriptreact = { "prettier" },
+        },
+        formatters = {
+            isort = {
+                prepend_args = {
+                    "--profile", "black",
+                    "--line-length", "128",
+                    "--ca",
+                    "--atomic",            -- 如果格式错误则不更改文件
+                },
+            },
+        },
+        format_on_save = {
+            -- These options will be passed to conform.format()
+            timeout_ms = 500,
+            lsp_format = "fallback",
+        },
+    })
     -----------------------------------------------
     -- require('fittencode').setup({
     --     completion = 'source'
@@ -547,21 +579,21 @@ let g:ale_linters = {
 """""" install plugs """"""
 " https://github.com/dense-analysis/ale/blob/master/doc/ale-sql.txt
 " brew install pgformatter
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-  \  'python': [ 'black', 'isort' ],
-  \  'go': [ 'gofmt' ],
-  \  'proto': [ 'clang-format' ],
-  \  'json': [ 'clang-format' ],
-  \  'sql': [ 'pgformatter' ],
-  \  'css': [ 'prettier' ],
-  \  'javascript': ['prettier'],
-  \  'javascriptreact': ['prettier'],
-  \  'typescript': [ 'prettier' ],
-  \  'typescriptreact': [ 'prettier' ],
-\}
-let g:ale_python_isort_options = '--profile black --ca'
-let g:ale_javascript_prettier_options = ''
+" let g:ale_fix_on_save = 1
+" let g:ale_fixers = {
+"   \  'python': [ 'black', 'isort' ],
+"   \  'go': [ 'gofmt' ],
+"   \  'proto': [ 'clang-format' ],
+"   \  'json': [ 'clang-format' ],
+"   \  'sql': [ 'pgformatter' ],
+"   \  'css': [ 'prettier' ],
+"   \  'javascript': ['prettier'],
+"   \  'javascriptreact': ['prettier'],
+"   \  'typescript': [ 'prettier' ],
+"   \  'typescriptreact': [ 'prettier' ],
+" \}
+" let g:ale_python_isort_options = '--profile black --ca'
+" let g:ale_javascript_prettier_options = ''
 
 
 " coc config
