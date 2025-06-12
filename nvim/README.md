@@ -77,6 +77,19 @@
     > ```
     > npx prettier . --write
     > ```
+4. pgformatter: `brew install pgformatter`
+5. cSpell
+    > 1. 依赖 node 环境，先安装 node
+    > 2. [安装 cSpell](https://cspell.org/docs/installation): npm install -g cspell@latest
+    > 3. ALE 中指定 lint 使用 `cspell`
+    > 4. 项目中通过 `cspell.yaml` 来添加自定义词汇
+    > ```
+    > dictionaries:
+    >    - aws # enable aws dictionary
+    >    - '!html' # Disable `html` dictionary
+    > words:
+    >    - apple
+    > ```
 
 
 ### copilot
