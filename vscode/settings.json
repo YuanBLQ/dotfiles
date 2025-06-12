@@ -1,0 +1,269 @@
+{
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.silentNotifications": false,
+  "workbench.colorTheme": "One Dark",
+  "breadcrumbs.enabled": true,
+  "editor.fontSize": 12,
+  "editor.renderWhitespace": "selection",
+  // 是否启用连体字
+  "editor.fontLigatures": false,
+  "editor.showFoldingControls": "always",
+  "editor.unfoldOnClickAfterEndOfLine": false,
+  "editor.minimap.autohide": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.bracketPairsHorizontal": false,
+  "editor.bracketPairColorization.enabled": false,
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  // 修复 vim 无法在这代码折叠式滚动光标
+  "vim.foldfix": true,
+  "vim.useSystemClipboard": true,
+  "vim.scroll": 15,
+  "vim.hlsearch": true,
+  // 高亮 */# 搜索结果
+  "vim.visualstar": true,
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-e>": false,
+    "<C-d>": true,
+    "<C-u>": true,
+    "<C-f>": true,
+    "b<C-b>": true,
+  },
+  "vim.commandLineModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "N",
+        "T"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "H"
+      ],
+      "after": [
+        "0"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "l"
+      ],
+      "after": [
+        "g",
+        "d"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "R"
+      ],
+      "commands": [
+        "references-view.findReferences"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "a"
+      ],
+      "commands": [
+        {
+          "command": "workbench.actions.view.problems",
+        }
+      ],
+      "silent": true
+    },
+    {
+      "before": [
+        "<space>",
+        "j"
+      ],
+      "commands": [
+        "editor.action.marker.nextInFiles"
+      ],
+      "silent": true
+    },
+    {
+      "before": [
+        "<space>",
+        "k"
+      ],
+      "commands": [
+        "editor.action.marker.prevInFiles"
+      ],
+      "silent": true
+    },
+    {
+      "before": [
+        "<c-l>"
+      ],
+      "commands": [
+        {
+          "command": "workbench.action.toggleEditorWidths",
+          "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups"
+        }
+      ],
+      "silent": true
+    },
+    {
+      "before": [
+        "N",
+        "T"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+      ]
+    },
+    {
+      "before": [
+        "<c-w>",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.toggleActivityBarVisibility"
+      ]
+    },
+    {
+      "before": [
+        "<c-w>",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.toggleStatusbarVisibility"
+      ]
+    },
+    {
+      "before": [
+        "c"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d"
+      ]
+    },
+    {
+      "before": [
+        "s"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "H"
+      ],
+      "after": [
+        "0"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "c"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d",
+        "i"
+      ]
+    },
+    {
+      "before": [
+        "s"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d",
+        "i"
+      ]
+    },
+    {
+      "before": [
+        "p"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d",
+        "P"
+      ]
+    }
+  ],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "<C-d>"
+      ],
+      "after": [
+        "<Del>"
+      ]
+    },
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "after": [
+        "<BS>"
+      ]
+    }
+  ],
+  // 自动 format
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+    },
+  },
+  "isort.args": [
+    "--profile",
+    "black",
+    "--ca"
+  ],
+}
