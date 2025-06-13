@@ -558,6 +558,7 @@ let g:ale_disable_lsp = 1
 let g:ale_use_neovim_diagnostics_api = 1
 
 let g:ale_linters_explicit = 1
+let g:ale_virtualtext_cursor = 0
 let g:ale_linters = {
   \  'proto': [ 'buf-lint' ],
   \  'go': [ 'gopls' ],
