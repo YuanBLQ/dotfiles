@@ -368,36 +368,6 @@ lua << EOF
       end,
     })
 
-    require("conform").setup({
-        formatters_by_ft = {
-            -- Conform will run multiple formatters sequentially
-            python = { "black", "isort" },
-            go = { "gofmt" },
-            proto = { "clang-format" },
-            json = { "clang-format" },
-            sql = { "pg_format" },
-            css = { "prettier" },
-            javascript = { "prettier" },
-            javascriptreact = { "prettier" },
-            typescript = { "prettier" },
-            typescriptreact = { "prettier" },
-        },
-        formatters = {
-            isort = {
-                prepend_args = {
-                    "--profile", "black",
-                    "--line-length", "128",
-                    "--ca",
-                    "--atomic",            -- 如果格式错误则不更改文件
-                },
-            },
-        },
-        format_on_save = {
-            -- These options will be passed to conform.format()
-            timeout_ms = 500,
-            lsp_format = "fallback",
-        },
-    })
     -----------------------------------------------
     -- require('fittencode').setup({
     --     completion = 'source'
@@ -533,6 +503,7 @@ lua << EOF
         },
     })
 EOF
+lua require("conform_config").setup(false)
 
 
 let g:comfortable_motion_friction = 180.0
@@ -564,6 +535,24 @@ nnoremap <a-j> <cmd>lua require('flash').jump()<cr>
 nnoremap <a-J> <cmd>lua require('flash').jump({search = { forward = false }})<cr>
 
 
+
+" switch formatter
+function! SwitchFmt(formatter) abort
+  if a:formatter ==# 'ale'
+    let g:ale_fix_on_save = 1
+    lua require("conform_config").setup(false)
+    echo "Switched to ALE"
+  elseif a:formatter ==# 'conform'
+    let g:ale_fix_on_save = 0
+    lua require("conform_config").setup(true)
+    echo "Switched to conform.nvim"
+  else
+    echoerr "Unknown formatter: " . a:formatter
+  endif
+endfunction
+command! -nargs=1 SwitchFmt call SwitchFmt(<f-args>)
+
+
 " Only run linters named in ale_linters settings.
 let g:ale_disable_lsp = 1
 let g:ale_use_neovim_diagnostics_api = 1
@@ -580,21 +569,21 @@ let g:ale_linters = {
 """""" install plugs """"""
 """""" https://github.com/dense-analysis/ale/blob/master/doc/ale-sql.txt
 """""" brew install pgformatter
-" let g:ale_fix_on_save = 1
-" let g:ale_fixers = {
-"   \  'python': [ 'black', 'isort' ],
-"   \  'go': [ 'gofmt' ],
-"   \  'proto': [ 'clang-format' ],
-"   \  'json': [ 'clang-format' ],
-"   \  'sql': [ 'pgformatter' ],
-"   \  'css': [ 'prettier' ],
-"   \  'javascript': ['prettier'],
-"   \  'javascriptreact': ['prettier'],
-"   \  'typescript': [ 'prettier' ],
-"   \  'typescriptreact': [ 'prettier' ],
-" \}
-" let g:ale_python_isort_options = '--profile black --ca'
-" let g:ale_javascript_prettier_options = ''
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+  \  'python': [ 'black', 'isort' ],
+  \  'go': [ 'gofmt' ],
+  \  'proto': [ 'clang-format' ],
+  \  'json': [ 'clang-format' ],
+  \  'sql': [ 'pgformatter' ],
+  \  'css': [ 'prettier' ],
+  \  'javascript': ['prettier'],
+  \  'javascriptreact': ['prettier'],
+  \  'typescript': [ 'prettier' ],
+  \  'typescriptreact': [ 'prettier' ],
+\}
+let g:ale_python_isort_options = '--profile black --ca'
+let g:ale_javascript_prettier_options = ''
 
 
 " coc config
