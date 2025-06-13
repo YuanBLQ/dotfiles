@@ -503,7 +503,6 @@ lua << EOF
         },
     })
 EOF
-lua require("conform_config").setup(false)
 
 
 let g:comfortable_motion_friction = 180.0
