@@ -557,12 +557,12 @@ let g:ale_disable_lsp = 1
 let g:ale_use_neovim_diagnostics_api = 1
 
 let g:ale_linters_explicit = 1
-let g:ale_virtualtext_cursor = 0
+let g:ale_virtualtext_cursor = 'disabled'
 let g:ale_linters = {
   \  'proto': [ 'buf-lint' ],
   \  'go': [ 'gopls' ],
-  \  'python': [ 'cspell' ],
 \}
+"  \  'python': [ 'cspell' ],
 "  \  'python': ['ruff', 'mypy'],
 "let g:ale_python_mypy_show_notes = 1
 
@@ -584,6 +584,14 @@ let g:ale_fixers = {
 \}
 let g:ale_python_isort_options = '--profile black --ca'
 let g:ale_javascript_prettier_options = ''
+
+
+command! ALECspellOnly call s:ALECspellOnly()
+function! s:ALECspellOnly()
+    let b:ale_linters = ['cspell']
+    ALELint
+    unlet b:ale_linters
+endfunction
 
 
 " coc config
