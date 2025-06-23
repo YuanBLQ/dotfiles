@@ -341,11 +341,12 @@ lua << EOF
     end
 
     -- Python
-    require'lspconfig'.pyright.setup{
+    vim.lsp.enable('pyright')
+    vim.lsp.config('pyright', {
         cmd = { 'pyright-langserver', '--stdio' },
         on_attach = on_lsp_attach,
         capabilities = capabilities,
-    }
+    })
     -- Golang
     require('lspconfig').gopls.setup({
         on_attach = on_lsp_attach,
@@ -357,6 +358,15 @@ lua << EOF
         on_attach = on_lsp_attach,
         capabilities = capabilities,
     }
+    -- Rust
+    vim.lsp.enable('rust_analyzer')
+    vim.lsp.config('rust_analyzer', {
+        on_attach = on_lsp_attach,
+        capabilities = capabilities,
+        settings = {
+            ['rust-analyzer'] = {},
+        },
+    })
 
     vim.diagnostic.config({
         virtual_text = false,
@@ -573,6 +583,7 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
   \  'python': [ 'black', 'isort' ],
   \  'go': [ 'gofmt' ],
+  \  'rust': [ 'rustfmt' ],
   \  'proto': [ 'clang-format' ],
   \  'json': [ 'clang-format' ],
   \  'sql': [ 'pgformatter' ],

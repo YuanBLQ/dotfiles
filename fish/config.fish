@@ -63,7 +63,15 @@ set -x XDG_CONFIG_HOME $HOME/.config
 
 
 # oo (Go version manager)
-source $HOME/.oo/env.fish
+if test -f $HOME/.oo/env.fish
+    source $HOME/.oo/env.fish
+end
+
+
+# rustup
+if test -f $HOME/.cargo/env.fish
+    source $HOME/.cargo/env.fish
+end
 
 
 # homebrew
