@@ -64,5 +64,27 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.diagnostic.config({
             virtual_text = false,
         })
+
+        -- folding
+        -- if client and client:supports_method "textDocument/foldingRange" then
+        --     local win = vim.api.nvim_get_current_win()
+        --     vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+        -- end
+
+        -- highlight words under cursor
+        if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = true })
+            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+                buffer = event.buf,
+                group = highlight_augroup,
+                callback = vim.lsp.buf.document_highlight,
+            })
+
+            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                buffer = event.buf,
+                group = highlight_augroup,
+                callback = vim.lsp.buf.clear_references,
+            })
+        end
     end
 })
