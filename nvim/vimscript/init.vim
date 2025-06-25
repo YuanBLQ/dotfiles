@@ -99,6 +99,8 @@ colorscheme tokyonight-storm
 
 
 lua << EOF
+    require("basic")
+
     require("todo-comments").setup({
         -- keywords recognized as todo comments
         keywords = {
@@ -133,8 +135,6 @@ lua << EOF
     }
 
     -- disable netrw at the very start of your init.lua
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
     require("nvim-tree").setup({
         sort_by = "case_sensitive",
         view = {
@@ -245,6 +245,8 @@ lua << EOF
         }
     }
 
+    require("lsp")
+
     local cmp = require 'cmp'
     cmp.setup({
         mapping = cmp.mapping.preset.insert({
@@ -266,6 +268,7 @@ lua << EOF
             },
         })
     })
+
     -- -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
     -- cmp.setup.cmdline({ '/', '?' }, {
     --     mapping = cmp.mapping.preset.cmdline(),
@@ -284,83 +287,6 @@ lua << EOF
     --     matching = { disallow_symbol_nonprefix_matching = false }
     -- })
 
-    local capablities = require('cmp_nvim_lsp').default_capabilities()
-    local on_lsp_attach = function(_, bufnr)
-        local function buf_set_option(...)
-            vim.api.nvim_buf_set_option(bufnr, ...)
-        end
-
-        buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-        -- Mappings.
-        local opts = { buffer = bufnr, noremap = true, silent = true }
-        vim.keymap.set(
-            'n', 'gD',
-            function()
-                vim.cmd('split')
-                vim.lsp.buf.declaration()
-            end, opts
-        )
-        vim.keymap.set(
-            'n', 'gd',
-            function()
-                vim.cmd('split')
-                vim.lsp.buf.definition()
-            end, opts
-        )
-        vim.keymap.set(
-            'n', 'gv',
-            function()
-                vim.cmd('vsplit')
-                vim.lsp.buf.definition()
-            end, opts
-        )
-        vim.keymap.set(
-            'n', 'gT',
-            function()
-                vim.cmd('tabnew')
-                vim.lsp.buf.definition()
-            end, opts
-        )
-        vim.keymap.set('n', 'gl', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('i', '<a-k>', vim.lsp.buf.signature_help, opts)
-        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-        vim.keymap.set('n', '<space>wl', function()
-            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end, opts)
-        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-        vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-        vim.keymap.set('n', '<space>k', vim.diagnostic.goto_prev, opts)
-        vim.keymap.set('n', '<space>j', vim.diagnostic.goto_next, opts)
-        vim.keymap.set('n', '<space>a', vim.diagnostic.setloclist, opts)
-    end
-
-    -- Python
-    require'lspconfig'.pyright.setup{
-        cmd = { 'pyright-langserver', '--stdio' },
-        on_attach = on_lsp_attach,
-        capabilities = capabilities,
-    }
-    -- Golang
-    require('lspconfig').gopls.setup({
-        on_attach = on_lsp_attach,
-        capabilities = capabilities,
-    })
-    -- TypeScript
-    require('lspconfig').ts_ls.setup{
-        cmd = { 'typescript-language-server', '--stdio' },
-        on_attach = on_lsp_attach,
-        capabilities = capabilities,
-    }
-
-    vim.diagnostic.config({
-        virtual_text = false,
-    })
 
     require("aerial").setup({
       -- optionally use on_attach to set keymaps when aerial has attached to a buffer
@@ -379,11 +305,7 @@ lua << EOF
     --     end, {}
     -- )
 
-    vim.opt.laststatus = 3
-
-    require('img-clip').setup ({
-
-    })
+    require('img-clip').setup ({})
     require('avante_lib').load()
     require('avante').setup({
         ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
@@ -578,6 +500,7 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
   \  'python': [ 'black', 'isort' ],
   \  'go': [ 'gofmt' ],
+  \  'rust': [ 'rustfmt' ],
   \  'proto': [ 'clang-format' ],
   \  'json': [ 'clang-format' ],
   \  'sql': [ 'pgformatter' ],
