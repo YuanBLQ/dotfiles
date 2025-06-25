@@ -549,7 +549,12 @@ function! SwitchFmt(formatter) abort
     echoerr "Unknown formatter: " . a:formatter
   endif
 endfunction
-command! -nargs=1 SwitchFmt call SwitchFmt(<f-args>)
+
+function! SwitchFmtComplete(A, L, P) abort
+  return ['conform', 'ale']
+endfunction
+
+command! -nargs=1 -complete=customlist,SwitchFmtComplete SwitchFmt call SwitchFmt(<f-args>)
 
 
 " Only run linters named in ale_linters settings.
