@@ -66,8 +66,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'hrsh7th/nvim-cmp'
 " commit: 99290b3ec1322070bcfb9e846450a46f6efa50f0
 Plug 'hrsh7th/cmp-nvim-lsp'
-" commit: 8a1529e46eef5efc86c34c8d9bdd313abc2ecba0
-Plug 'neovim/nvim-lspconfig'
 " commit: 3022dbc9166796b644a841a02de8dd1cc1d311fa
 Plug 'hrsh7th/cmp-buffer'
 " commit: 91ff86cd9c29299a64f968ebb45846c485725f23
