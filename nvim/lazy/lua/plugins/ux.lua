@@ -1,11 +1,13 @@
 return {
 	{
 		"folke/tokyonight.nvim",
+		-- "EdenEast/nightfox.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
 		lazy = false,
 		priority = 1000,
 		config = function()
 			vim.cmd.colorscheme("tokyonight-storm")
+			-- vim.cmd.colorscheme("nordfox")
 		end,
 	},
 	{
@@ -56,8 +58,7 @@ return {
 				desc = "Start WinResizer",
 			},
 		},
-		config = function()
-			-- vim.keymap.set("n", "<a-w>", "<Cmd>WinResizerStartResize<CR>", {})
+		init = function()
 			vim.g.winresizer_vert_resize = 3
 		end,
 	},

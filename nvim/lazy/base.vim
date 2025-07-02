@@ -44,7 +44,7 @@ set updatetime=300
 
 
 function! HighlightExtraWhitespace()
-  highlight ExtraWhitespace ctermbg=red guibg=#EC7063
+  "highlight ExtraWhitespace ctermbg=red guibg=#EC7063
   match ExtraWhitespace /\s\+$/
 endfunction
 
