@@ -1,7 +1,7 @@
 return {
 	{
 		"folke/tokyonight.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -11,9 +11,10 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
-		lazy = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
+		cmd = {
+			"NT",
+			"NF",
+			"NR",
 		},
 		config = function()
 			vim.g.loaded_netrw = 1
@@ -47,8 +48,16 @@ return {
 	},
 	{
 		"simeji/winresizer",
+		keys = {
+			{
+				"<A-w>",
+				"<Cmd>WinResizerStartResize<CR>",
+				mode = "n",
+				desc = "Start WinResizer",
+			},
+		},
 		config = function()
-			vim.keymap.set("n", "<a-w>", "<Cmd>WinResizerStartResize<CR>", {})
+			-- vim.keymap.set("n", "<a-w>", "<Cmd>WinResizerStartResize<CR>", {})
 			vim.g.winresizer_vert_resize = 3
 		end,
 	},
