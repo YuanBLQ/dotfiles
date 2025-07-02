@@ -62,4 +62,45 @@ return {
 			vim.g.winresizer_vert_resize = 3
 		end,
 	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			notification = {
+				override_vim_notify = true,
+				filter = vim.log.levels.DEBUG,
+			},
+			logger = {
+				level = vim.log.levels.DEBUG,
+			},
+		},
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		opts = {
+			options = {
+				theme = "auto",
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
+			},
+			sections = {
+				lualine_b = { "branch", "diff" },
+				lualine_c = {
+					{
+						"filename",
+						path = 1,
+					},
+				},
+				lualine_x = { "selectioncount", "diagnostics", "encoding" },
+			},
+			inactive_sections = {
+				lualine_c = {
+					{
+						"filename",
+						path = 1,
+						color = { fg = "#c0caf5" },
+					},
+				},
+			},
+		},
+	},
 }
