@@ -17,12 +17,34 @@ return {
 		},
 		config = function()
 			local telescope = require("telescope")
+			local actions = require("telescope.actions")
+			local action_state = require("telescope.actions.state")
+
+			local function smart_enter(prompt_bufnr)
+				local picker = action_state.get_current_picker(prompt_bufnr)
+				local num_selections = #(picker:get_multi_selection())
+
+				if num_selections == 0 then
+					actions.select_default(prompt_bufnr)
+				elseif num_selections == 1 then
+					-- 只选中一个时默认也进入，不进入 quickfix
+					actions.select_default(prompt_bufnr)
+				else
+					-- 选中多个时发送到 quickfix 并打开
+					actions.send_selected_to_qflist(prompt_bufnr)
+					actions.open_qflist(prompt_bufnr)
+				end
+			end
+
 			telescope.setup({
 				defaults = {
 					mappings = {
 						i = {
 							["<C-u>"] = false,
 							["<C-d>"] = false,
+							["<CR>"] = smart_enter,
+							["<C-k>"] = actions.preview_scrolling_up,
+							["<C-j>"] = actions.preview_scrolling_down,
 						},
 					},
 					layout_config = {
