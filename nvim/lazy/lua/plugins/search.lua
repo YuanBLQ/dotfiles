@@ -50,6 +50,10 @@ return {
 					layout_config = {
 						width = 0.6,
 						height = 0.6,
+						horizontal = {
+							preview_width = 0.45,
+							results_width = 0.55,
+						},
 					},
 				},
 				extensions = {
@@ -83,7 +87,11 @@ return {
 
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<a-p>", builtin.find_files, { desc = "Telescope find files" })
-			vim.keymap.set("n", "<a-f>", builtin.live_grep, { desc = "Telescope live grep" })
+			vim.keymap.set("n", "<a-f>", function()
+				require("telescope.builtin").live_grep({
+					path_display = { "smart" },
+				})
+			end, { desc = "Telescope live grep" })
 			vim.keymap.set("n", "<a-b>", builtin.buffers, { desc = "Telescope buffers" })
 			vim.keymap.set("n", "<a-h>", builtin.help_tags, { desc = "Telescope help tags" })
 
