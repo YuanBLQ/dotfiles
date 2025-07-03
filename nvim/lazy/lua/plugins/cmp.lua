@@ -1,6 +1,36 @@
 return {
 	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+		},
+		config = function()
+			local cmp = require("cmp")
+			cmp.setup({
+				mapping = cmp.mapping.preset.insert({
+					["<C-e>"] = cmp.mapping.abort(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<a-cr>"] = cmp.mapping.complete(),
+				}),
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "path" },
+				}, {
+					{
+						name = "buffer",
+						option = {
+							get_bufnrs = function()
+								return vim.api.nvim_list_bufs()
+							end,
+						},
+					},
+				}),
+			})
+		end,
+	},
+	{
 		"saghen/blink.cmp",
+		enabled = false,
 		-- optional: provides snippets for the snippet source
 		-- dependencies = { 'rafamadriz/friendly-snippets' },
 
