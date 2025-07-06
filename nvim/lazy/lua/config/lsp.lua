@@ -1,7 +1,7 @@
 vim.lsp.enable("pyright")
 -- vim.lsp.enable('rust_analyzer')
 -- vim.lsp.enable('gopls')
--- vim.lsp.enable('ts_ls')
+vim.lsp.enable("ts_ls")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
