@@ -163,9 +163,9 @@ return {
 		dependencies = {
 			"dense-analysis/ale",
 		},
-		cmd = {
-			"SwitchFmt",
-		},
+		-- cmd = {
+		-- 	"SwitchFmt",
+		-- },
 		config = function()
 			-- 定义 :SwitchFmt 命令
 			local conform_config = require("config.conform")
@@ -177,6 +177,8 @@ return {
 					return conform_config.complete(arglead, cmdline, cursorpos)
 				end,
 			})
+
+			conform_config.switch("conform")
 		end,
 	},
 	{
@@ -201,7 +203,7 @@ return {
 			-- g.ale_python_mypy_show_notes = 1
 
 			-- fixer
-			g.ale_fix_on_save = 1
+			g.ale_fix_on_save = 0
 			g.ale_fixers = {
 				python = { "black", "isort" },
 				-- brew install stylua
