@@ -77,7 +77,7 @@ return {
 							end
 						end,
 						-- Available modes: symbols, lines, both
-						show_columns = "both",
+						show_columns = "lines",
 					},
 				},
 			})
@@ -98,7 +98,15 @@ return {
 			vim.keymap.set("n", "gR", builtin.lsp_references, { desc = "Telescope list lsp references" })
 			vim.keymap.set("n", "gS", builtin.git_status, { desc = "Telescope list git status" })
 
-			vim.keymap.set("n", "<a-o>", "<Cmd>Telescope aerial<CR>", { desc = "Telescope find code symbols" })
+			-- vim.keymap.set("n", "<a-o>", "<Cmd>Telescope aerial<CR>", { desc = "Telescope find code symbols" })
+			vim.keymap.set("n", "<a-o>", function()
+				require("telescope").extensions.aerial.aerial({
+					previewer = false,
+					layout_config = {
+						width = 0.3,
+					},
+				})
+			end, { desc = "Telescope find code symbols" })
 
 			require("config.highlights").load_telescope()
 		end,
