@@ -33,7 +33,6 @@ return {
 		},
 	},
 	dependencies = {
-		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
 		--- 以下依赖项是可选的，
 		-- "echasnovski/mini.pick", -- 用于文件选择器提供者 mini.pick
