@@ -13,9 +13,9 @@ function M.setup(enable_format_on_save)
 			go = { "gofmt" },
 			proto = { "clang-format" },
 			json = { "clang-format" },
-			-- https://github.com/dense-analysis/ale/blob/master/doc/ale-sql.txt
+			-- https://github.com/stevearc/conform.nvim/blob/master/lua/conform/formatters/pg_format.lua
 			-- brew install pgformatter
-			sql = { "pgformatter" },
+			sql = { "pg_format" },
 			css = { "prettier" },
 			javascript = { "prettier" },
 			javascriptreact = { "prettier" },
