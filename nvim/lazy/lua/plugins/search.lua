@@ -93,7 +93,7 @@ return {
 				})
 			end, { desc = "Telescope live grep" })
 			vim.keymap.set("n", "<a-b>", builtin.buffers, { desc = "Telescope buffers" })
-			vim.keymap.set("n", "<a-h>", builtin.help_tags, { desc = "Telescope help tags" })
+			-- vim.keymap.set("n", "<a-h>", builtin.help_tags, { desc = "Telescope help tags" })
 
 			vim.keymap.set("n", "gR", builtin.lsp_references, { desc = "Telescope list lsp references" })
 			vim.keymap.set("n", "gS", builtin.git_status, { desc = "Telescope list git status" })
