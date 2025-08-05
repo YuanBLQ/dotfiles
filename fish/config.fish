@@ -22,9 +22,9 @@
 set -e fish_user_paths
 set -x GOPATH $HOME/go
 set -x PYENV_ROOT $HOME/.pyenv
+
 set -gx fish_user_paths \
     # $HOME/.pyenv/shims \
-    /opt/homebrew/opt/node@22/bin \
     /opt/homebrew/bin \
     /opt/homebrew/opt \
     $GOPATH/bin \
@@ -36,6 +36,17 @@ set -gx fish_user_paths \
     /sbin \
     /bin \
     $fish_user_paths
+
+# Add Homebrew-opt bin paths automatically
+function add_homebrew_bins
+    for module in $argv
+        set mod_path /opt/homebrew/opt/$module/bin
+        if test -d $mod_path
+            contains $mod_path $fish_user_paths; or set -gx fish_user_paths $mod_path $fish_user_paths
+        end
+    end
+end
+add_homebrew_bins node@22 postgresql@15
 
 
 # starship
