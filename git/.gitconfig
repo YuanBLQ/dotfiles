@@ -21,11 +21,12 @@
 [alias]
     pso = push --set-upstream origin
     plu = pull upstream
+	dcp = !cur=$(git branch --show-current) && git switch master && git branch -D \"$cur\" && git pull upstream master
 [pull]
     rebase = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
