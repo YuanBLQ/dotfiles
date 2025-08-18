@@ -22,6 +22,7 @@
     pso = push --set-upstream origin
     plu = pull upstream
     dcp = !cur=$(git branch --show-current) && git switch master && git branch -D \"$cur\" && git pull upstream master
+    dc = !cur=$(git branch --show-current) && git switch master && git branch -D \"$cur\"
 [pull]
     rebase = false
 [difftool "sourcetree"]

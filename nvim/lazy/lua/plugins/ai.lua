@@ -1,5 +1,6 @@
 return {
 	"yetone/avante.nvim",
+	enabled = false,
 	-- 如果您想从源代码构建，请执行 `make BUILD_FROM_SOURCE=true`
 	build = "make", -- ⚠️ 一定要加上这一行配置！！！！！
 	-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- 对于 Windows
