@@ -104,3 +104,5 @@ command! E :edit!
 let g:ftplugin_sql_omni_key = '<C-j>'
 
 let mapleader = " "
+
+command! DC :call copilot#Dismiss()
