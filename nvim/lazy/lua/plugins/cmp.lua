@@ -213,6 +213,8 @@ return {
 				-- https://github.com/dense-analysis/ale/blob/master/doc/ale-sql.txt
 				-- brew install pgformatter
 				sql = { "pgformatter" },
+				-- pip install djlint
+				html = { "djlint" },
 				css = { "prettier" },
 				javascript = { "prettier" },
 				javascriptreact = { "prettier" },

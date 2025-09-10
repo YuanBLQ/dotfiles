@@ -16,6 +16,8 @@ function M.setup(enable_format_on_save)
 			-- https://github.com/stevearc/conform.nvim/blob/master/lua/conform/formatters/pg_format.lua
 			-- brew install pgformatter
 			sql = { "pg_format" },
+			-- pip install djlint
+			html = { "djlint" },
 			css = { "prettier" },
 			javascript = { "prettier" },
 			javascriptreact = { "prettier" },
