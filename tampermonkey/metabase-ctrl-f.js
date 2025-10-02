@@ -4,7 +4,7 @@
 // @version      1.0
 // @description  将 Ctrl+F 转换为右箭头（光标右移）
 // @author       You
-// @match        https://example.com/*
+// @match        https://example.com/*   <--- 将此处替换为 Metabase 实际 URL
 // @grant        none
 // ==/UserScript==
 
