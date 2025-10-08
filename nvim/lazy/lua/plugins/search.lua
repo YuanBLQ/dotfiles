@@ -14,11 +14,13 @@ return {
 		branch = "0.1.x",
 		dependencies = {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			{ "nvim-telescope/telescope-live-grep-args.nvim", version = "1.1.0" },
 		},
 		config = function()
 			local telescope = require("telescope")
 			local actions = require("telescope.actions")
 			local action_state = require("telescope.actions.state")
+			local lga_actions = require("telescope-live-grep-args.actions")
 
 			local function smart_enter(prompt_bufnr)
 				local picker = action_state.get_current_picker(prompt_bufnr)
@@ -79,16 +81,32 @@ return {
 						-- Available modes: symbols, lines, both
 						show_columns = "lines",
 					},
+					live_grep_args = {
+						auto_quoting = false, -- enable/disable auto-quoting
+						mappings = { -- extend mappings
+							i = {
+								["<C-k>"] = lga_actions.quote_prompt(),
+								["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob *." }),
+								["<C-l>"] = lga_actions.quote_prompt({ postfix = " --iglob **//**" }),
+							},
+						},
+					},
 				},
 			})
 			-- load_extension, after setup function:
 			telescope.load_extension("fzf")
 			telescope.load_extension("aerial")
+			telescope.load_extension("live_grep_args")
 
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<a-p>", builtin.find_files, { desc = "Telescope find files" })
+			-- vim.keymap.set("n", "<a-f>", function()
+			-- 	require("telescope.builtin").live_grep({
+			-- 		path_display = { "smart" },
+			-- 	})
+			-- end, { desc = "Telescope live grep" })
 			vim.keymap.set("n", "<a-f>", function()
-				require("telescope.builtin").live_grep({
+				require("telescope").extensions.live_grep_args.live_grep_args({
 					path_display = { "smart" },
 				})
 			end, { desc = "Telescope live grep" })
