@@ -14,13 +14,11 @@ return {
 		branch = "0.1.x",
 		dependencies = {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-			{ "nvim-telescope/telescope-live-grep-args.nvim", version = "1.1.0" },
 		},
 		config = function()
 			local telescope = require("telescope")
 			local actions = require("telescope.actions")
 			local action_state = require("telescope.actions.state")
-			local lga_actions = require("telescope-live-grep-args.actions")
 
 			local function smart_enter(prompt_bufnr)
 				local picker = action_state.get_current_picker(prompt_bufnr)
@@ -81,22 +79,11 @@ return {
 						-- Available modes: symbols, lines, both
 						show_columns = "lines",
 					},
-					live_grep_args = {
-						auto_quoting = false, -- enable/disable auto-quoting
-						mappings = { -- extend mappings
-							i = {
-								["<C-k>"] = lga_actions.quote_prompt(),
-								["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob *." }),
-								["<C-l>"] = lga_actions.quote_prompt({ postfix = " --iglob **//**" }),
-							},
-						},
-					},
 				},
 			})
 			-- load_extension, after setup function:
 			telescope.load_extension("fzf")
 			telescope.load_extension("aerial")
-			telescope.load_extension("live_grep_args")
 
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<a-p>", builtin.find_files, { desc = "Telescope find files" })
@@ -105,11 +92,6 @@ return {
 			-- 		path_display = { "smart" },
 			-- 	})
 			-- end, { desc = "Telescope live grep" })
-			vim.keymap.set("n", "<a-f>", function()
-				require("telescope").extensions.live_grep_args.live_grep_args({
-					path_display = { "smart" },
-				})
-			end, { desc = "Telescope live grep" })
 			vim.keymap.set("n", "<a-b>", builtin.buffers, { desc = "Telescope buffers" })
 			-- vim.keymap.set("n", "<a-h>", builtin.help_tags, { desc = "Telescope help tags" })
 
@@ -127,6 +109,43 @@ return {
 			end, { desc = "Telescope find code symbols" })
 
 			require("config.highlights").load_telescope()
+		end,
+	},
+	{
+		"ibhagwan/fzf-lua",
+		config = function()
+			local FzfLua = require("fzf-lua")
+			FzfLua.setup({
+				keymap = {
+					builtin = {
+						["<a-space>"] = "toggle-preview",
+						["<c-j>"] = "preview-down",
+						["<c-k>"] = "preview-up",
+					},
+					fzf = {
+						["alt-a"] = "toggle-all",
+						["ctrl-u"] = "unix-line-discard",
+						["ctrl-d"] = false,
+						["ctrl-f"] = false,
+						["ctrl-b"] = false,
+					},
+				},
+				actions = {
+					files = {
+						["enter"] = FzfLua.actions.file_edit_or_qf,
+						["ctrl-x"] = FzfLua.actions.file_split,
+						["ctrl-v"] = FzfLua.actions.file_vsplit,
+						["ctrl-t"] = FzfLua.actions.file_tabedit,
+						["alt-f"] = false,
+					},
+				},
+				grep = {
+					rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+				},
+			})
+
+			-- keymaps
+			vim.keymap.set("n", "<a-f>", FzfLua.live_grep, { desc = "FzfLua live grep" })
 		end,
 	},
 }
