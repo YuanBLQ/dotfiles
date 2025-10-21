@@ -119,8 +119,8 @@ return {
 				keymap = {
 					builtin = {
 						["<a-space>"] = "toggle-preview",
-						["<c-j>"] = "preview-down",
-						["<c-k>"] = "preview-up",
+						["<c-j>"] = "preview-page-down",
+						["<c-k>"] = "preview-page-up",
 					},
 					fzf = {
 						["alt-a"] = "toggle-all",
