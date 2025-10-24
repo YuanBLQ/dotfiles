@@ -115,7 +115,39 @@ return {
 		"ibhagwan/fzf-lua",
 		config = function()
 			local FzfLua = require("fzf-lua")
+
+			local fzf_colors
+			-- Reuse Tokyonight's palette when available so fzf-lua follows the active theme
+			local ok, tn_colors = pcall(require, "tokyonight.colors")
+			if ok then
+				local palette = tn_colors.setup()
+				local set_hl = vim.api.nvim_set_hl
+
+				set_hl(0, "FzfLuaNormal", { fg = palette.fg, bg = palette.bg_float })
+				set_hl(0, "FzfLuaBorder", { fg = palette.border, bg = palette.bg_float })
+				set_hl(0, "FzfLuaCursorLine", { fg = palette.fg, bg = palette.bg_highlight })
+				set_hl(0, "FzfLuaMatch", { fg = palette.blue })
+				set_hl(0, "FzfLuaPrompt", { fg = palette.cyan })
+				set_hl(0, "FzfLuaPointer", { fg = palette.magenta })
+
+				fzf_colors = {
+					["fg"] = { "fg", "FzfLuaNormal" },
+					["bg"] = { "bg", "FzfLuaNormal" },
+					["hl"] = { "fg", "FzfLuaMatch" },
+					["fg+"] = { "fg", "FzfLuaNormal" },
+					["bg+"] = { "bg", "FzfLuaCursorLine" },
+					["hl+"] = { "fg", "FzfLuaMatch" },
+					["info"] = { "fg", "FzfLuaPrompt" },
+					["prompt"] = { "fg", "FzfLuaPrompt" },
+					["pointer"] = { "fg", "FzfLuaPointer" },
+					["marker"] = { "fg", "FzfLuaPointer" },
+					["spinner"] = { "fg", "FzfLuaPrompt" },
+					["header"] = { "fg", "Comment" },
+					["gutter"] = { "bg", "FzfLuaNormal" },
+				}
+			end
 			FzfLua.setup({
+				fzf_colors = fzf_colors,
 				keymap = {
 					builtin = {
 						["<a-space>"] = "toggle-preview",
@@ -141,6 +173,13 @@ return {
 				},
 				grep = {
 					rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+					actions = {
+						-- actions inherit from 'actions.files' and merge
+						-- this action toggles between 'grep' and 'live_grep'
+						["ctrl-f"] = { FzfLua.actions.grep_lgrep },
+						-- '.gitignore' toggle for grep
+						["ctrl-r"] = { FzfLua.actions.toggle_ignore },
+					},
 				},
 			})
 
