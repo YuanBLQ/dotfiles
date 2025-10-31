@@ -174,9 +174,6 @@ return {
 				grep = {
 					rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
 					actions = {
-						-- actions inherit from 'actions.files' and merge
-						-- this action toggles between 'grep' and 'live_grep'
-						["ctrl-f"] = { FzfLua.actions.grep_lgrep },
 						-- '.gitignore' toggle for grep
 						["ctrl-r"] = { FzfLua.actions.toggle_ignore },
 					},
