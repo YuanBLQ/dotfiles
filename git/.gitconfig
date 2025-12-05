@@ -20,6 +20,7 @@
 	email = isyuan@yeah.net
 [alias]
     pso = push --set-upstream origin
+    psu = push --set-upstream upstream
     plu = pull upstream
     dcp = !cur=$(git branch --show-current) && git switch master && git branch -D \"$cur\" && git pull upstream master
     dc = !cur=$(git branch --show-current) && git switch master && git branch -D \"$cur\"

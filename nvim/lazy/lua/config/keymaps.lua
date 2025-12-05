@@ -44,6 +44,3 @@ keymap("v", "s", '"_di', opts)
 
 -- visual 模式粘贴不复制原内容
 keymap("v", "p", '"_dP', opts)
-
--- :W 保存所有
-vim.api.nvim_create_user_command("W", ":wa", {})

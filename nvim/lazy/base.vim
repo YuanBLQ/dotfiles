@@ -97,6 +97,7 @@ vnoremap p "_dP
 
 command! W :wa
 command! E :edit!
+command! Q :tabclose
 
 " ftplugin installs a buffer-local mapping for Ctrl-C
 " reconfigure it to use <C-j> instead
