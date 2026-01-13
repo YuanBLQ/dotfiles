@@ -1,6 +1,7 @@
 local M = {}
 
-local current = "ale"
+-- local current = "ale"
+local current = "conform"
 
 function M.setup(enable_format_on_save)
 	require("conform").setup({
