@@ -1,0 +1,39 @@
+[env]
+TERM = "xterm-256color"
+
+[window]
+option_as_alt = "OnlyLeft"
+
+[colors.cursor]
+# 光标颜色（改成更醒目的颜色）
+cursor = "#00FF00"      # 亮绿色
+text = "#000000"        # 光标内文字颜色
+
+[selection]
+save_to_clipboard = true
+
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Command"
+action = "ToggleFullscreen"
+
+[font]
+size = 13
+
+[font.normal]
+family = "Maple Mono NF"
+style = "Regular"
+
+[font.bold]
+family = "Maple Mono NF"
+style = "Bold"
+
+[font.italic]
+family = "Maple Mono NF"
+style = "Italic"
+
+[font.bold_italic]
+family = "Maple Mono NF"
+style = "Bold Italic"
+
