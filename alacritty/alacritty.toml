@@ -12,6 +12,10 @@ text = "#000000"        # 光标内文字颜色
 [selection]
 save_to_clipboard = true
 
+[terminal.shell]
+program = "/opt/homebrew/bin/fish"
+args = ["-lc", "tmux new-session -A -D -s main"]
+
 
 [[keyboard.bindings]]
 key = "Return"
@@ -36,4 +40,3 @@ style = "Italic"
 [font.bold_italic]
 family = "Maple Mono NF"
 style = "Bold Italic"
-
