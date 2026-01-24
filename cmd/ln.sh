@@ -11,7 +11,9 @@ ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 # git
 ln -s ~/dotfiles/git/.gitconfig ~/.gitconfig
+ln -s ~/dotfiles/git/.gitCommitMsg ~/.gitCommitMsg
 ln -s ~/dotfiles/git/delta.themes.gitconfig ~/.delta.themes.gitconfig
+ln -s ~/dotfiles/git/.gitignore_global ~/.gitignore_global
 
 # nvim
 ln -s ~/dotfiles/nvim/lazy/base.vim ~/.config/nvim/base.vim
