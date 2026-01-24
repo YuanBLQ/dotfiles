@@ -3,6 +3,17 @@
 ~/.tmux.conf
 ```
 
+# 安装 TPM (tmux plugin manager)
+```
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+## 快捷键
+- `PREFIX + I`: 安装新插件
+- `PREFIX + U`: 更新已安装插件
+- `PREFIX + alt + u`: 卸载已删除的插件
+
+
 # 常用命令
 
 ## 调整 pane
