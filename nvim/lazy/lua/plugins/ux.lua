@@ -1,21 +1,21 @@
 return {
 	{
-		-- "folke/tokyonight.nvim",
-		"catppuccin/nvim",
+		"folke/tokyonight.nvim",
+		-- "catppuccin/nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("catppuccin").setup({
-				no_italic = true,
-				color_overrides = {
-					macchiato = {
-						base = "#1b1f30",
-					},
-				},
-			})
-			-- vim.cmd.colorscheme("tokyonight-storm")
-			vim.cmd.colorscheme("catppuccin-macchiato")
+			-- require("catppuccin").setup({
+			-- 	no_italic = true,
+			-- 	color_overrides = {
+			-- 		macchiato = {
+			-- 			base = "#1b1f30",
+			-- 		},
+			-- 	},
+			-- })
+			-- vim.cmd.colorscheme("catppuccin-macchiato")
+			vim.cmd.colorscheme("tokyonight-storm")
 		end,
 	},
 	{
