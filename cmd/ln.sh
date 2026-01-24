@@ -4,6 +4,7 @@ ln -s ~/dotfiles/kitty/themes ~/.config/kitty/themes
 
 # fish
 ln -s ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
+ln -s ~/dotfiles/fish/starship.toml ~/.config/starship.toml
 
 # tmux
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
