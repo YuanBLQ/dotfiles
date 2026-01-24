@@ -3,6 +3,10 @@ vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("gopls")
 vim.lsp.enable("ts_ls")
 
+-- Autocmd groups must exist before being referenced by name in nvim_clear_autocmds.
+local lsp_highlight_group = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+local lsp_detach_group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true })
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 	callback = function(event)
@@ -56,26 +60,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- highlight words under cursor
 		if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-			local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 				buffer = event.buf,
-				group = highlight_augroup,
+				group = lsp_highlight_group,
 				callback = vim.lsp.buf.document_highlight,
 			})
 
 			vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 				buffer = event.buf,
-				group = highlight_augroup,
+				group = lsp_highlight_group,
 				callback = vim.lsp.buf.clear_references,
 			})
 		end
 
 		-- offload upon detachment
 		vim.api.nvim_create_autocmd("LspDetach", {
-			group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+			group = lsp_detach_group,
 			callback = function(dt_event)
 				vim.lsp.buf.clear_references()
-				vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = dt_event.buf })
+				vim.api.nvim_clear_autocmds({ group = lsp_highlight_group, buffer = dt_event.buf })
 			end,
 		})
 	end,
