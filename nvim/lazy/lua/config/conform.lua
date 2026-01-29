@@ -4,6 +4,7 @@ local M = {}
 local current = "conform"
 
 function M.setup(enable_format_on_save)
+	local timeout_ms = vim.g.conform_timeout_ms or 5000
 	require("conform").setup({
 		formatters_by_ft = {
 			-- Conform will run multiple formatters sequentially
@@ -40,7 +41,7 @@ function M.setup(enable_format_on_save)
 		format_on_save = enable_format_on_save
 				and {
 					-- These options will be passed to conform.format()
-					timeout_ms = 500,
+					timeout_ms = timeout_ms,
 					lsp_format = "fallback",
 				}
 			or nil,
