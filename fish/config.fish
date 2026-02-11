@@ -130,6 +130,9 @@ function dotenv --description 'Load environment variables from .env file'
             set -xg (echo $line | cut -d = -f 1) (echo $line | cut -d = -f 2-)
         end
 
+        set -xg DOTENV_ACTIVE 1
+        set -xg DOTENV_FILE $envfile
+
         # # Rewrite _pure_prompt function
         # if not functions -q _old_pure_prompt
         #     functions -c _pure_prompt _old_pure_prompt
