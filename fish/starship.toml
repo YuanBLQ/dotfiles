@@ -1,5 +1,5 @@
 format = """
-${custom.proxy}${custom.pyenv}$all
+${custom.proxy}${custom.pyenv}${custom.dotenv}$all
 """
 
 [custom.proxy]
@@ -11,6 +11,12 @@ format = "$symbol"
 when = "which pip"
 symbol = "🔗 "
 style = "bold orange"
+format = "[$symbol]($style)"
+
+[custom.dotenv]
+when = 'test -n "$DOTENV_ACTIVE"'
+symbol = "🧩 "
+style = "bold green"
 format = "[$symbol]($style)"
 
 [time]
