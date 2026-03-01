@@ -48,6 +48,11 @@ function add_homebrew_bins
 end
 add_homebrew_bins node@22 postgresql@15
 
+# Add .local/bin if exists
+if test -d $HOME/.local/bin
+    contains $HOME/.local/bin $fish_user_paths; or set -gx fish_user_paths $HOME/.local/bin $fish_user_paths
+end
+
 
 # starship
 starship init fish | source
