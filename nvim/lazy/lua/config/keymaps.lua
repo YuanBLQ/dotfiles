@@ -44,3 +44,6 @@ keymap("v", "s", '"_di', opts)
 
 -- visual 模式粘贴不复制原内容
 keymap("v", "p", '"_dP', opts)
+
+-- 退出 terminal mode (Ctrl + \ & Ctrl + n)
+keymap("t", "<C-[>", [[<C-\><C-n>]], opts)

@@ -93,6 +93,9 @@ nnoremap s "_d
 vnoremap s "_di
 
 vnoremap p "_dP
+
+" terminal mode: exit to terminal-normal mode
+tnoremap <C-[> <C-\><C-n>
 """""""""""""""""""""""""""""""
 
 command! W :wa
