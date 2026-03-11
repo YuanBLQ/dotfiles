@@ -9,7 +9,7 @@ format = "$symbol"
 
 [custom.pyenv]
 when = "which pip"
-symbol = "🔗 "
+symbol = "🌽 "
 style = "bold orange"
 format = "[$symbol]($style)"
 
