@@ -94,8 +94,9 @@ vnoremap s "_di
 
 vnoremap p "_dP
 
-" terminal mode: exit to terminal-normal mode
-tnoremap <C-[> <C-\><C-n>
+" Do not map <C-[> in terminal mode. In most terminals, <Esc> and <C-[>
+" share the same keycode, so mapping one also changes the other.
+tnoremap <C-\> <C-\><C-n>
 """""""""""""""""""""""""""""""
 
 command! W :wa
