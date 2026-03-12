@@ -81,8 +81,11 @@ noremap! <c-h> <BS>
 noremap! <a-b> <S-Left>
 noremap! <a-f> <S-Right>
 
-" copy relative file path of current buffer
-nmap cp :let @+ = expand("%")<cr>
+" always absolute
+nmap cP :let @+ = expand("%:p")<cr>
+
+" always relative to current cwd
+nmap cp :let @+ = expand("%:.")<cr>
 
 " send changing words to the black hole
 " ref:https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim
