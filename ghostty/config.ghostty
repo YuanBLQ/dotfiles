@@ -7,6 +7,10 @@ font-family-bold-italic = Maple Mono NF CN
 # theme
 theme = tokyonight_storm
 
+# icon
+macos-icon = custom
+macos-custom-icon = ~/.config/ghostty/Ghostty.icns
+
 # misc
 copy-on-select = clipboard
 mouse-hide-while-typing = true
