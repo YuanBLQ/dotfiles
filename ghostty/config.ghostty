@@ -1,8 +1,5 @@
 # font
 font-family = Maple Mono NF CN
-font-family-bold = Maple Mono NF CN
-font-family-italic = Maple Mono NF CN
-font-family-bold-italic = Maple Mono NF CN
 
 # theme
 theme = tokyonight_storm
