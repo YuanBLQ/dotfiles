@@ -1,0 +1,325 @@
+{
+  "title": "HyperGlyph",
+  "rules": [
+    {
+      "description": "Change caps_lock to command+control+option+shift.",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_shift",
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Chrome Hyper+Y copy current tab URL and open in new tab",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.google\\.Chrome$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "l",
+              "modifiers": [
+                "command"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "command"
+              ]
+            },
+            {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
+            },
+            {
+              "key_code": "t",
+              "modifiers": [
+                "command"
+              ]
+            },
+            {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
+            },
+            {
+              "key_code": "v",
+              "modifiers": [
+                "command"
+              ]
+            },
+            {
+              "key_code": "return_or_enter"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Chrome Hyper+J/K switch to the tab",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.google\\.Chrome$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "tab",
+              "modifiers": [
+                "left_control"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.google\\.Chrome$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "tab",
+              "modifiers": [
+                "left_control",
+                "left_shift"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Chrome Hyper+N open tab in split view",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.google\\.Chrome$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "left_control",
+                "left_option",
+                "left_shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "n",
+              "modifiers": [
+                "left_command",
+                "left_option"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Open Lark by Option + Shift + l",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": [
+                "left_option",
+                "left_shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "software_function": {
+                "open_application": {
+                  "bundle_identifier": "com.larksuite.larkApp"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open Ghostty by Option + Shift + m",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "m",
+            "modifiers": {
+              "mandatory": [
+                "left_option",
+                "left_shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "software_function": {
+                "open_application": {
+                  "bundle_identifier": "com.mitchellh.ghostty"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open Wechat by Option + Shift + w",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "left_option",
+                "left_shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "software_function": {
+                "open_application": {
+                  "bundle_identifier": "com.tencent.xinWeChat"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open Chrome by Option + Shift + g",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "left_option",
+                "left_shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "software_function": {
+                "open_application": {
+                  "bundle_identifier": "com.google.Chrome"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
