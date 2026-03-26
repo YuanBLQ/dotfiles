@@ -21,7 +21,7 @@
 [alias]
     pso = push --set-upstream origin
     psu = push --set-upstream upstream
-    plu = pull upstream
+    plu = "!f() { branch=${1:-$(git branch --show-current)}; git pull upstream \"$branch\"; }; f"
     dcp = !cur=$(git branch --show-current) && git switch master && git branch -D \"$cur\" && git pull upstream master
     dc = !cur=$(git branch --show-current) && git switch master && git branch -D \"$cur\"
 [pull]
