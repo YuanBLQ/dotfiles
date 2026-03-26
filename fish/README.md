@@ -1,10 +1,21 @@
-## starship prompt
+## starship & fish
 
 ### 安装
-`curl -sS https://starship.rs/install.sh | sh` or `brew install starship`
+`/opt/homebrew/bin/brew install fish`
+`/opt/homebrew/bin/brew install starship`
 
 ### 配置
-`~/.config/starship.toml`
+
+设置fish的默认shell:
+
+```shell
+sudo sh -c 'echo /opt/homebrew/bin/fish >> /etc/shells'
+chsh -s /opt/homebrew/bin/fish
+```
+
+配置文件:
+- `~/.config/starship.toml`
+- `~/.config/fish/config.fish`
 
 
 ## fisher
